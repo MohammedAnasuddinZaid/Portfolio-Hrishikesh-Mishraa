@@ -57,3 +57,10 @@ export interface BelvoMetrics {
   latencyMs: number;
   activeRegions: number;
 }
+
+export interface BelvoServiceItem {
+  id: string;
+  name: string;
+  icon: string;
+  description: string;
+}

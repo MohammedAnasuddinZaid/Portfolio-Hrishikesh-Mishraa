@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
 
+interface Trail {
+  id: number;
+  x: number;
+  y: number;
+  opacity: number;
+}
+
 export const CustomCursor: React.FC = () => {
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [follower, setFollower] = useState({ x: -100, y: -100 });
   const [isHovered, setIsHovered] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [trails, setTrails] = useState<Trail[]>([]);
+
+  let trailId = 0;
 
   useEffect(() => {
-    // Check if device supports touch
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
       setIsTouchDevice(true);
       return;
@@ -16,6 +25,10 @@ export const CustomCursor: React.FC = () => {
 
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
+      setTrails(prev => {
+        const newTrail = { id: trailId++, x: e.clientX, y: e.clientY, opacity: 0.5 };
+        return [...prev.slice(-5), newTrail];
+      });
     };
 
     const handleMouseDown = () => setIsClicking(true);
@@ -25,7 +38,6 @@ export const CustomCursor: React.FC = () => {
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);
 
-    // Track interactive elements
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => setIsHovered(false);
 
@@ -46,7 +58,6 @@ export const CustomCursor: React.FC = () => {
     };
   }, []);
 
-  // Smooth lerp for outer follower ring
   useEffect(() => {
     if (isTouchDevice) return;
 
@@ -56,10 +67,11 @@ export const CustomCursor: React.FC = () => {
         const dx = position.x - prev.x;
         const dy = position.y - prev.y;
         return {
-          x: prev.x + dx * 0.15,
-          y: prev.y + dy * 0.15,
+          x: prev.x + dx * 0.12,
+          y: prev.y + dy * 0.12,
         };
       });
+      setTrails(prev => prev.map(t => ({ ...t, opacity: t.opacity - 0.02 })).filter(t => t.opacity > 0));
       animationFrameId = requestAnimationFrame(updateFollower);
     };
 
@@ -71,26 +83,38 @@ export const CustomCursor: React.FC = () => {
 
   return (
     <>
-      {/* Inner Dot */}
+      {trails.map(t => (
+        <div
+          key={t.id}
+          className="fixed pointer-events-none z-[9997] rounded-full"
+          style={{
+            width: '4px',
+            height: '4px',
+            backgroundColor: 'rgba(220, 38, 38, 0.3)',
+            transform: `translate3d(${t.x - 2}px, ${t.y - 2}px, 0)`,
+            opacity: t.opacity,
+          }}
+        />
+      ))}
       <div
         className="fixed pointer-events-none z-[9999] rounded-full transition-transform duration-75 ease-out"
         style={{
-          width: '8px',
-          height: '8px',
-          backgroundColor: '#b4c5ff',
-          transform: `translate3d(${position.x - 4}px, ${position.y - 4}px, 0) scale(${isClicking ? 0.6 : isHovered ? 1.5 : 1})`,
+          width: '6px',
+          height: '6px',
+          backgroundColor: '#dc2626',
+          boxShadow: '0 0 12px rgba(220, 38, 38, 0.4)',
+          transform: `translate3d(${position.x - 3}px, ${position.y - 3}px, 0) scale(${isClicking ? 0.6 : isHovered ? 1.5 : 1})`,
         }}
       />
-
-      {/* Outer Follower Ring */}
       <div
-        className="fixed pointer-events-none z-[9998] rounded-full transition-all duration-300 ease-out border mix-blend-difference"
+        className="fixed pointer-events-none z-[9998] rounded-full transition-all duration-200 ease-out"
         style={{
-          width: isHovered ? '72px' : '36px',
-          height: isHovered ? '72px' : '36px',
-          borderColor: isHovered ? 'rgba(180, 197, 255, 0.8)' : 'rgba(255, 255, 255, 0.3)',
-          backgroundColor: isHovered ? 'rgba(180, 197, 255, 0.1)' : 'transparent',
-          transform: `translate3d(${follower.x - (isHovered ? 36 : 18)}px, ${follower.y - (isHovered ? 36 : 18)}px, 0) scale(${isClicking ? 0.9 : 1})`,
+          width: isHovered ? '64px' : '28px',
+          height: isHovered ? '64px' : '28px',
+          borderColor: isHovered ? 'rgba(220, 38, 38, 0.5)' : 'rgba(20, 20, 20, 0.15)',
+          backgroundColor: isHovered ? 'rgba(220, 38, 38, 0.06)' : 'transparent',
+          border: '1px solid',
+          transform: `translate3d(${follower.x - (isHovered ? 32 : 14)}px, ${follower.y - (isHovered ? 32 : 14)}px, 0) scale(${isClicking ? 0.85 : 1})`,
         }}
       />
     </>

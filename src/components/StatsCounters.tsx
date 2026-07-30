@@ -1,31 +1,68 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { PORTFOLIO_INFO } from '../data/portfolioData';
 
+function AnimatedStat({ value, suffix, label, delay }: { value: string; suffix: string; label: string; delay: number }) {
+  const [displayValue, setDisplayValue] = useState('0');
+  const ref = useRef<HTMLDivElement>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          const numPart = parseInt(value.replace(/[^0-9]/g, ''));
+          const prefix = value.replace(/[0-9]/g, '');
+          const target = numPart || 100;
+          const duration = 2000;
+          const start = performance.now();
+          const animate = (now: number) => {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3);
+            setDisplayValue(`${prefix}${Math.floor(ease * target).toLocaleString()}`);
+            if (progress < 1) requestAnimationFrame(animate);
+          };
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [value]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay }}
+      className="p-6 border border-white/10 bg-[#1c1c1c] flex flex-col justify-between hover:border-red-600 transition-all group"
+    >
+      <div>
+        <div className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[#f5f5f5] tracking-tighter mb-2 group-hover:text-red-500 transition-colors">
+          {displayValue}
+          <span className="text-red-600">{suffix}</span>
+        </div>
+        <div className="text-[10px] uppercase tracking-[0.2em] font-black text-[#f5f5f5]/60 leading-tight">
+          {label}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export const StatsCounters: React.FC = () => {
   return (
-    <section className="py-16 relative bg-[#141414] text-[#f5f5f5] border-y border-black/10">
+    <section className="py-16 relative bg-[#141414] text-[#f5f5f5] border-y border-black/10 premium-noise">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16">
+        <div className="text-[10px] font-mono text-emerald-500/70 mb-4 tracking-wider font-black uppercase"><span className="text-red-500">❯</span> ./metrics --live</div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
           {PORTFOLIO_INFO.stats.map((stat, idx) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="p-6 border border-white/10 bg-[#1c1c1c] flex flex-col justify-between hover:border-red-600 transition-all group"
-            >
-              <div>
-                <div className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[#f5f5f5] tracking-tighter mb-2 group-hover:text-red-500 transition-colors">
-                  {stat.value}
-                  <span className="text-red-600">{stat.suffix}</span>
-                </div>
-                <div className="text-[10px] uppercase tracking-[0.2em] font-black text-[#f5f5f5]/60 leading-tight">
-                  {stat.label}
-                </div>
-              </div>
-            </motion.div>
+            <AnimatedStat key={stat.label} value={stat.value} suffix={stat.suffix} label={stat.label} delay={idx * 0.1} />
           ))}
         </div>
       </div>

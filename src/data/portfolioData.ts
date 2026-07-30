@@ -6,7 +6,7 @@ export const PORTFOLIO_INFO = {
   title: "Co-Founder & CEO @ Belvo | Angel Investor | Software Engineer",
   tagline: "Building Businesses. Engineering Products. Investing in Founders.",
   bioShort: "Hrishikesh Mishra is a technology entrepreneur, CEO of Belvo, and strategic growth partner specializing in high-scale digital infrastructure, fintech rails, and founder mentorship.",
-  bioLong: "My career has been defined by the intersection of rigorous software engineering and aggressive business scaling. I believe that code is the leverage, but execution is the competitive edge. As the Co-Founder & CEO of Belvo, I lead a team dedicated to redefining financial infrastructure across global markets. Beyond Belvo, I actively invest in first-principles technical founders building deep technology, developer tools, and scalable SaaS solutions.",
+  bioLong: "My career has been defined by the intersection of rigorous software engineering and aggressive business scaling. I believe that code is the leverage, but execution is the competitive edge. As the Co-Founder & CEO of Belvo, I lead a team dedicated to redefining digital infrastructure across global markets. Beyond Belvo, I actively invest in first-principles technical founders building deep technology, developer tools, and scalable SaaS solutions.",
   email: "hello@hrishikesh.com",
   secondaryEmail: "realhrishikeshmishra@gmail.com",
   blogUrl: "https://www.hrishikesmishra.buzz",
@@ -114,16 +114,50 @@ export const TIMELINE_LIST: TimelineItem[] = [
     title: "Co-Founder & Chief Executive Officer (CEO)",
     organization: "Belvo",
     role: "Executive CEO",
-    summary: "Spearheading Belvo's vision as the leading open finance API and branding/technology partner, powering financial connectivity for millions of users.",
+    summary: "Spearheading Belvo's vision as a full-stack digital services agency — building brands, websites, apps, and driving growth through SEO, performance marketing, and creative design.",
     keyAchievements: [
-      "Expanded platform capabilities to support over 100M+ API requests per month.",
-      "Scaled the organization across engineering, marketing, and business development.",
+      "Expanded Belvo into 14 service verticals spanning web dev, branding, marketing, and software.",
+      "Scaled the organization across engineering, design, marketing, and business development.",
       "Helped over 100+ brands and startups build, launch, and scale modern digital products."
     ],
-    skillsUsed: ["Executive Leadership", "API Platform Architecture", "Brand Strategy", "Angel Advisory", "Capital Allocation"],
+    skillsUsed: ["Executive Leadership", "Brand Strategy", "Digital Marketing", "Software Architecture", "Team Building"],
     isCurrent: true
   }
 ];
+
+export const BELVO_INFO = {
+  name: "Belvo",
+  tagline: "Full-Stack Digital Services Agency",
+  description: "Belvo is a full-stack digital services agency specializing in web development, branding, social media marketing, SEO, digital marketing, and creative design. From concept to launch, we build brands that dominate.",
+  email: "contact.belvo@gmail.com",
+  secondaryEmail: "info.belvo@gmail.com",
+  careerEmail: "career.belvo@gmail.com",
+  phone: ["+91 89284 66820", "+91 98495 67122"],
+  social: {
+    instagram: "https://instagram.com/belvo_official",
+    linkedin: "https://linkedin.com/company/belvo-buzz",
+  },
+  location: "Goregaon, Mumbai, Maharashtra",
+  responseTime: "24 hours",
+  services: [
+    { id: "web-dev", name: "Web Development", icon: "code", description: "Business websites, portfolio sites, landing pages, and responsive mobile-friendly websites." },
+    { id: "branding", name: "Branding", icon: "token", description: "Logo design, brand identity systems, and comprehensive visual branding materials." },
+    { id: "social-media", name: "Social Media Management", icon: "share", description: "Content creation, campaign management, and brand visibility growth across platforms." },
+    { id: "seo", name: "SEO", icon: "search", description: "Google ranking optimization, on-page SEO, keyword research, and technical SEO audits." },
+    { id: "digital-marketing", name: "Digital Marketing", icon: "campaign", description: "Online advertising, marketing strategy, lead generation, and brand promotion." },
+    { id: "content-design", name: "Content & Creative Design", icon: "palette", description: "Graphics, marketing materials, promotional content, and visual storytelling." },
+    { id: "brand-outreach", name: "Brand Outreach & PR", icon: "public", description: "Media relations, press releases, influencer coordination, and public image management." },
+    { id: "3d-cgi", name: "3D & CGI", icon: "view_in_ar", description: "3D modeling, product visualization, architectural rendering, and CGI animation." },
+    { id: "animation-vfx", name: "Animation & VFX", icon: "movie", description: "Motion graphics, visual effects, explainer videos, and animated brand content." },
+    { id: "graphics", name: "Graphics Designing", icon: "design_services", description: "Print & digital graphics, UI mockups, packaging design, and illustration." },
+    { id: "ecommerce", name: "E-Commerce Management", icon: "shopping_cart", description: "Store setup, product listings, payment integration, and conversion optimization." },
+    { id: "performance-marketing", name: "Performance Marketing", icon: "analytics", description: "Paid ads, ROI tracking, conversion funnels, and data-driven campaign optimization." },
+    { id: "influencer-marketing", name: "Influencer Marketing", icon: "groups", description: "Creator partnerships, campaign strategy, audience targeting, and ROI measurement." },
+    { id: "app-dev", name: "App Development", icon: "smartphone", description: "Native iOS & Android apps, cross-platform solutions, and app store deployment." },
+    { id: "software-dev", name: "Software Development", icon: "terminal", description: "Custom software, SaaS platforms, APIs, and enterprise-grade digital solutions." },
+    { id: "crm-automation", name: "CRM & Automation", icon: "settings", description: "CRM setup, workflow automation, lead tracking, and customer journey optimization." },
+  ]
+};
 
 export const BELVO_METRICS: BelvoMetrics = {
   apiRequests: "100M+",

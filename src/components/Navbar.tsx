@@ -8,18 +8,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [activeSection, setActiveSection] = useState('');
 
   const navLinks = [
     { name: 'Expertise', href: '#expertise' },
@@ -28,15 +17,33 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     { name: 'Investments', href: '#investments' },
     { name: 'Services', href: '#services' },
     { name: 'Tech Stack', href: '#tech-stack' },
-    { name: 'Contact', href: '#contact' },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+      const sections = navLinks.map(link => ({
+        id: link.href.slice(1),
+        element: document.getElementById(link.href.slice(1)),
+      }));
+      const scrollPos = window.scrollY + 120;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const s = sections[i];
+        if (s.element && s.element.offsetTop <= scrollPos) {
+          setActiveSection(s.id);
+          return;
+        }
+      }
+      setActiveSection('');
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -45,18 +52,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 border-b ${
           scrolled
             ? 'h-20 bg-[#f5f5f5]/90 backdrop-blur-xl border-black/15 shadow-sm'
-            : 'h-24 bg-transparent border-black/10'
+            : 'h-24 bg-transparent border-transparent'
         }`}
       >
         <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16 h-full flex items-center justify-between">
-          {/* Logo */}
           <a
             href="#"
             className="group flex flex-col justify-center"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
+            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           >
             <span className="font-display text-xl sm:text-2xl font-black tracking-tighter text-[#141414] uppercase group-hover:text-red-600 transition-colors">
               Hrishikesh Mishra.
@@ -66,41 +69,40 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             </span>
           </a>
 
-          {/* Desktop Nav Links */}
           <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(link.href);
-                }}
-                className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#141414]/70 hover:text-[#141414] transition-colors relative group py-1"
-              >
-                {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#141414] transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.slice(1);
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                  className={`text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-300 relative py-1 ${
+                    isActive ? 'text-[#141414]' : 'text-[#141414]/60 hover:text-[#141414]'
+                  }`}
+                >
+                  {link.name}
+                  <span className={`absolute -bottom-1 left-0 h-[2px] bg-[#141414] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                </a>
+              );
+            })}
           </div>
 
-          {/* Actions */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={onOpenContact}
-              className="px-6 py-2.5 bg-[#141414] text-[#f5f5f5] font-black text-xs uppercase tracking-widest hover:bg-red-600 transition-all duration-300 active:scale-95 shadow-md"
+              className="px-6 py-2.5 bg-[#141414] text-white font-black text-xs uppercase tracking-widest hover:bg-red-600 transition-all duration-300 active:scale-95 shadow-md"
             >
               Invest With Me
             </button>
             <button
               onClick={onOpenContact}
-              className="px-6 py-2.5 border border-[#141414]/30 bg-white/60 text-[#141414] font-black text-xs uppercase tracking-widest hover:bg-[#141414] hover:text-[#f5f5f5] transition-all duration-300"
+              className="px-6 py-2.5 border border-[#141414]/30 bg-white/60 text-[#141414] font-black text-xs uppercase tracking-widest hover:bg-[#141414] hover:text-white transition-all duration-300"
             >
               Connect
             </button>
           </div>
 
-          {/* Mobile Hamburger Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden text-[#141414] p-2 focus:outline-none"
@@ -113,7 +115,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         </div>
       </nav>
 
-      {/* Mobile Drawer Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -127,10 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(link.href);
-                  }}
+                  onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
                   className="text-2xl font-display font-black uppercase text-[#141414] hover:text-red-600 transition-colors py-2 border-b border-black/10 flex items-center justify-between"
                 >
                   {link.name}
@@ -141,10 +139,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
 
             <div className="flex flex-col gap-4 pt-8">
               <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenContact();
-                }}
+                onClick={() => { setMobileMenuOpen(false); onOpenContact(); }}
                 className="w-full py-4 bg-[#141414] text-[#f5f5f5] font-black text-center tracking-widest uppercase text-xs"
               >
                 Start A Dialogue

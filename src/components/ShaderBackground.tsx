@@ -7,7 +7,7 @@ export const ShaderBackground: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    const gl = (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')) as WebGLRenderingContext | null;
     if (!gl) return;
 
     function syncSize() {
@@ -23,74 +23,64 @@ export const ShaderBackground: React.FC = () => {
     syncSize();
     window.addEventListener('resize', syncSize);
 
-    const vs = `
-      attribute vec2 a_position;
-      varying vec2 v_texCoord;
-      void main() {
-        v_texCoord = a_position * 0.5 + 0.5;
-        gl_Position = vec4(a_position, 0.0, 1.0);
-      }
-    `;
+    const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
 
-    const fs = `
-      precision highp float;
-      uniform float u_time;
-      uniform vec2 u_resolution;
-      uniform vec2 u_mouse;
-      varying vec2 v_texCoord;
+    const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_texCoord;
 
-      vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
-      float snoise(vec2 v){
-        const vec4 C = vec4(0.211324865405187, 0.366025403784439,
-                 -0.577350269189626, 0.024390243902439);
-        vec2 i  = floor(v + dot(v, C.yy) );
-        vec2 x0 = v -   i + dot(i, C.xx);
-        vec2 i1;
-        i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-        vec4 x12 = x0.xyxy + C.xxzz;
-        x12.xy -= i1;
-        i = mod(i, 289.0);
-        vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 ))
-        + i.x + vec3(0.0, i1.x, 1.0 ));
-        vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy),
-          dot(x12.zw,x12.zw)), 0.0);
-        m = m*m;
-        m = m*m;
-        vec3 x = 2.0 * fract(p * C.www) - 1.0;
-        vec3 h = abs(x) - 0.5;
-        vec3 a0 = x - floor(x + 0.5);
-        vec3 g = a0 * vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw));
-        return 130.0 * dot(m, g);
-      }
+vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
+float snoise(vec2 v){
+  const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+  vec2 i  = floor(v + dot(v, C.yy));
+  vec2 x0 = v - i + dot(i, C.xx);
+  vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+  vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1;
+  i = mod(i, 289.0);
+  vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 )) + i.x + vec3(0.0, i1.x, 1.0 ));
+  vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+  m = m*m; m = m*m;
+  vec3 x = 2.0 * fract(p * C.www) - 1.0;
+  vec3 h = abs(x) - 0.5;
+  vec3 a0 = x - floor(x + 0.5);
+  vec3 g = a0 * vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw));
+  return 130.0 * dot(m, g);
+}
 
-      void main() {
-        vec2 uv = v_texCoord;
-        vec2 mouse = u_mouse / u_resolution;
-        
-        float t = u_time * 0.08;
-        
-        float n1 = snoise(uv * 1.8 + t);
-        float n2 = snoise(uv * 3.5 - t * 0.7 + n1);
-        
-        vec3 col1 = vec3(0.96, 0.96, 0.96); // Warm Plaster Bone White (#F5F5F5)
-        vec3 col2 = vec3(0.92, 0.92, 0.90); // Subtle Warm Paper Gray
-        vec3 col3 = vec3(0.85, 0.85, 0.82); // Soft Architectural Shadow
+void main() {
+  vec2 uv = v_texCoord;
+  vec2 mouse = u_mouse / u_resolution;
 
-        vec3 finalColor = mix(col1, col2, n1 * 0.5 + 0.5);
-        float mouseDist = distance(uv, vec2(mouse.x, 1.0 - mouse.y));
-        float mouseGlow = smoothstep(0.6, 0.0, mouseDist);
+  float t = u_time * 0.08;
 
-        finalColor = mix(finalColor, col3, n2 * 0.15 + mouseGlow * 0.05);
-        
-        float vignette = 1.0 - smoothstep(0.4, 1.4, length(uv - 0.5));
-        finalColor *= vignette;
-        
-        float grain = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
-        finalColor += grain * 0.018;
+  float n1 = snoise(uv * 1.8 + t);
+  float n2 = snoise(uv * 3.5 - t * 0.7 + n1);
 
-        gl_FragColor = vec4(finalColor, 1.0);
-      }
-    `;
+  vec3 col1 = vec3(0.96, 0.96, 0.96);
+  vec3 col2 = vec3(0.92, 0.92, 0.90);
+  vec3 col3 = vec3(0.85, 0.85, 0.82);
+
+  vec3 finalColor = mix(col1, col2, n1 * 0.5 + 0.5);
+  float mouseDist = distance(uv, vec2(mouse.x, 1.0 - mouse.y));
+  float mouseGlow = smoothstep(0.6, 0.0, mouseDist);
+
+  finalColor = mix(finalColor, col3, n2 * 0.15 + mouseGlow * 0.05);
+
+  float vignette = 1.0 - smoothstep(0.4, 1.4, length(uv - 0.5));
+  finalColor *= vignette;
+
+  float grain = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+  finalColor += grain * 0.018;
+
+  gl_FragColor = vec4(finalColor, 1.0);
+}`;
 
     function compileShader(type: number, src: string) {
       if (!gl) return null;
@@ -163,7 +153,7 @@ export const ShaderBackground: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 w-full h-full -z-50 pointer-events-none bg-[#050505]">
+    <div className="fixed inset-0 w-full h-full -z-50 pointer-events-none bg-[#f5f5f5]">
       <canvas ref={canvasRef} className="w-full h-full block" />
     </div>
   );
