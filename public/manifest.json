@@ -4,8 +4,8 @@
   "description": "Interactive portfolio of Hrishikesh Mishra — Co-Founder & CEO at Belvo, Angel Investor, and Software Engineer.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f5f5f5",
-  "theme_color": "#141414",
+  "background_color": "#fcfcfc",
+  "theme_color": "#32302f",
   "orientation": "portrait-primary",
   "icons": [
     {

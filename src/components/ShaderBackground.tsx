@@ -63,9 +63,9 @@ void main() {
   float n1 = snoise(uv * 1.8 + t);
   float n2 = snoise(uv * 3.5 - t * 0.7 + n1);
 
-  vec3 col1 = vec3(0.96, 0.96, 0.96);
-  vec3 col2 = vec3(0.92, 0.92, 0.90);
-  vec3 col3 = vec3(0.85, 0.85, 0.82);
+  vec3 col1 = vec3(0.988, 0.988, 0.988);
+  vec3 col2 = vec3(0.980, 0.973, 0.961);
+  vec3 col3 = vec3(0.894, 0.886, 0.882);
 
   vec3 finalColor = mix(col1, col2, n1 * 0.5 + 0.5);
   float mouseDist = distance(uv, vec2(mouse.x, 1.0 - mouse.y));
@@ -153,7 +153,7 @@ void main() {
   }, []);
 
   return (
-    <div className="fixed inset-0 w-full h-full -z-50 pointer-events-none bg-[#f5f5f5]">
+    <div className="fixed inset-0 w-full h-full -z-50 pointer-events-none bg-[#fcfcfc]">
       <canvas ref={canvasRef} className="w-full h-full block" />
     </div>
   );

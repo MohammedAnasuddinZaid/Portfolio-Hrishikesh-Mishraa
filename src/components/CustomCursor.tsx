@@ -41,7 +41,7 @@ export const CustomCursor: React.FC = () => {
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => setIsHovered(false);
 
-    const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, .glass-card, [role="button"]');
+    const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, .soft-card, .glow-card, [role="button"]');
     interactiveElements.forEach((el) => {
       el.addEventListener('mouseenter', handleMouseEnter);
       el.addEventListener('mouseleave', handleMouseLeave);
@@ -90,7 +90,7 @@ export const CustomCursor: React.FC = () => {
           style={{
             width: '4px',
             height: '4px',
-            backgroundColor: 'rgba(220, 38, 38, 0.3)',
+            backgroundColor: 'rgba(176, 52, 46, 0.3)',
             transform: `translate3d(${t.x - 2}px, ${t.y - 2}px, 0)`,
             opacity: t.opacity,
           }}
@@ -101,8 +101,8 @@ export const CustomCursor: React.FC = () => {
         style={{
           width: '6px',
           height: '6px',
-          backgroundColor: '#dc2626',
-          boxShadow: '0 0 12px rgba(220, 38, 38, 0.4)',
+          backgroundColor: '#b0342e',
+          boxShadow: '0 0 12px rgba(176, 52, 46, 0.4)',
           transform: `translate3d(${position.x - 3}px, ${position.y - 3}px, 0) scale(${isClicking ? 0.6 : isHovered ? 1.5 : 1})`,
         }}
       />
@@ -111,8 +111,8 @@ export const CustomCursor: React.FC = () => {
         style={{
           width: isHovered ? '64px' : '28px',
           height: isHovered ? '64px' : '28px',
-          borderColor: isHovered ? 'rgba(220, 38, 38, 0.5)' : 'rgba(20, 20, 20, 0.15)',
-          backgroundColor: isHovered ? 'rgba(220, 38, 38, 0.06)' : 'transparent',
+          borderColor: isHovered ? 'rgba(176, 52, 46, 0.5)' : 'rgba(50, 48, 47, 0.18)',
+          backgroundColor: isHovered ? 'rgba(176, 52, 46, 0.06)' : 'transparent',
           border: '1px solid',
           transform: `translate3d(${follower.x - (isHovered ? 32 : 14)}px, ${follower.y - (isHovered ? 32 : 14)}px, 0) scale(${isClicking ? 0.85 : 1})`,
         }}

@@ -55,7 +55,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
   const bgY = (mousePos.y - 0.5) * 8;
 
   return (
-    <section ref={sectionRef} className="relative min-h-svh pt-24 sm:pt-32 pb-16 sm:pb-20 flex items-center bg-white perspective-container">
+    <section ref={sectionRef} className="relative min-h-svh pt-24 sm:pt-32 pb-16 sm:pb-20 flex items-center paper-canvas perspective-container">
       <AnimatePresence>
         {!revealDone && (
           <>
@@ -66,7 +66,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               exit={{ x: '-100%' }}
               transition={{ duration: 0.8, delay: 2.2, ease: [0.77, 0, 0.18, 1] }}
               onAnimationComplete={() => setRevealDone(true)}
-              className="fixed inset-y-0 left-0 w-1/2 z-[9998] bg-[#141414] flex items-center justify-end pr-12"
+              className="fixed inset-y-0 left-0 w-1/2 z-[9998] bg-[#0c0c0d] flex items-center justify-end pr-12"
             >
               <motion.div
                 initial={{ opacity: 0, x: 40 }}
@@ -75,7 +75,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-right"
               >
-                <div className="text-[10px] font-mono text-red-500/70 uppercase tracking-[0.3em] mb-2 font-black">
+                <div className="text-[10px] font-mono text-[#b0342e]/80 uppercase tracking-[0.3em] mb-2 font-black">
                   INITIALIZING
                 </div>
                 <div className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tighter font-display">
@@ -90,7 +90,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               animate={{ x: '100%' }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.8, delay: 2.2, ease: [0.77, 0, 0.18, 1] }}
-              className="fixed inset-y-0 right-0 w-1/2 z-[9998] bg-[#141414] flex items-center pl-12"
+              className="fixed inset-y-0 right-0 w-1/2 z-[9998] bg-[#0c0c0d] flex items-center pl-12"
             >
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
@@ -98,7 +98,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                 exit={{ opacity: 0, x: 40 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <div className="font-display text-3xl sm:text-4xl font-black text-red-600 uppercase tracking-tighter">
+                <div className="font-display text-3xl sm:text-4xl font-black text-[#b0342e] uppercase tracking-tighter">
                   Mishra
                 </div>
                 <div className="text-[10px] font-mono text-white/40 uppercase tracking-[0.3em] mt-2 font-black">
@@ -113,7 +113,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               animate={{ scaleY: 1 }}
               exit={{ scaleY: 0 }}
               transition={{ duration: 0.4, delay: 0.1, ease: [0.77, 0, 0.18, 1] }}
-              className="fixed top-0 left-1/2 -translate-x-1/2 w-[1px] h-full z-[9999] bg-red-600/50 origin-top"
+              className="fixed top-0 left-1/2 -translate-x-1/2 w-[1px] h-full z-[9999] bg-[#b0342e]/50 origin-top"
             />
           </>
         )}
@@ -130,9 +130,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
         </span>
       </div>
 
-      <div className="absolute top-40 left-10 w-3 h-3 bg-red-500/30 animate-float pointer-events-none" style={{ borderRadius: '50%' }} />
-      <div className="absolute bottom-40 right-20 w-2 h-2 bg-[#141414]/20 animate-float pointer-events-none" style={{ borderRadius: '50%', animationDelay: '2s' }} />
-      <div className="absolute top-1/3 right-1/4 w-4 h-4 bg-red-500/10 animate-float pointer-events-none" style={{ borderRadius: '50%', animationDelay: '4s' }} />
+      <div className="absolute top-40 left-10 w-3 h-3 bg-[#b0342e]/30 animate-float pointer-events-none" style={{ borderRadius: '50%' }} />
+      <div className="absolute bottom-40 right-20 w-2 h-2 bg-[#3a3525]/25 animate-float pointer-events-none" style={{ borderRadius: '50%', animationDelay: '2s' }} />
+      <div className="absolute top-1/3 right-1/4 w-4 h-4 bg-[#b0342e]/10 animate-float pointer-events-none" style={{ borderRadius: '50%', animationDelay: '4s' }} />
 
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16 w-full grid lg:grid-cols-12 gap-8 xl:gap-12 items-center">
         <motion.div
@@ -146,15 +146,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-3 px-4 py-2 glass-pill mb-8 w-fit border border-black/20 shadow-xs flex-wrap"
+            className="inline-flex items-center gap-3 px-4 py-2 glass-pill mb-8 w-fit border border-[#32302f]/20 shadow-xs flex-wrap"
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse shrink-0" />
-            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] text-[#141414]">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#b0342e] animate-pulse shrink-0" />
+            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] text-[#32302f]">
               CO-FOUNDER &bull; CEO &bull; ANGEL INVESTOR
             </span>
           </motion.div>
 
-          <h1 className="font-display text-[clamp(2.75rem,6.2vw,5.5rem)] leading-[0.94] font-black uppercase tracking-tighter text-[#141414] mb-8 overflow-visible">
+          <h1 className="font-display text-[clamp(2.75rem,6.2vw,5.5rem)] leading-[0.94] font-black uppercase tracking-tighter text-[#32302f] mb-8 overflow-visible">
             <motion.span
               custom={0}
               variants={lineReveal}
@@ -162,7 +162,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               animate="visible"
               className="block overflow-visible"
             >
-              Building <span className="text-[#141414]">Businesses.</span>
+              Building <span className="text-[#32302f]">Businesses.</span>
             </motion.span>
             <motion.span
               custom={1}
@@ -171,7 +171,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               animate="visible"
               className="block mt-2 overflow-visible"
             >
-              <span className="font-serif-italic lowercase tracking-normal text-red-600 font-normal">engineering products.</span>
+              <span className="font-serif-italic lowercase tracking-normal text-[#b0342e] font-normal">engineering products.</span>
             </motion.span>
             <motion.span
               custom={2}
@@ -183,7 +183,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               Investing in{' '}
               <span className="relative inline-block">
                 <span className="relative z-10">Founders.</span>
-                <span className="absolute bottom-1 left-0 w-full h-3 bg-red-600/20 -z-10 animate-scale-pulse" style={{ transformOrigin: 'left' }} />
+                <span className="absolute bottom-1 left-0 w-full h-3 bg-[#b0342e]/20 -z-10 animate-scale-pulse" style={{ transformOrigin: 'left' }} />
               </span>
             </motion.span>
           </h1>
@@ -193,7 +193,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="font-sans text-base sm:text-lg lg:text-xl text-[#141414]/80 max-w-2xl mb-10 leading-relaxed font-medium"
+            className="font-sans text-base sm:text-lg lg:text-xl text-[#32302f]/80 max-w-2xl mb-10 leading-relaxed font-medium"
           >
             {PORTFOLIO_INFO.bioShort}
           </motion.p>
@@ -209,7 +209,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => document.querySelector('#expertise')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 sm:px-10 sm:py-5 bg-[#141414] hover:bg-red-600 text-white font-black text-xs sm:text-sm uppercase tracking-widest transition-all shadow-xl active:scale-95 flex items-center justify-center gap-3 group"
+              className="pill pill-crimson !px-8 !py-4 sm:!px-10 sm:!py-5 !text-xs sm:!text-sm !uppercase !tracking-widest shadow-xl flex items-center justify-center gap-3 group"
             >
               <span>Explore Expertise</span>
               <span className="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
@@ -219,10 +219,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={onOpenContact}
-              className="px-8 py-4 sm:px-10 sm:py-5 border border-[#141414]/30 bg-white/70 text-[#141414] font-black text-xs sm:text-sm uppercase tracking-widest transition-all hover:bg-[#141414] hover:text-white flex items-center justify-center gap-2"
+              className="pill pill-light !px-8 !py-4 sm:!px-10 sm:!py-5 !text-xs sm:!text-sm !uppercase !tracking-widest flex items-center justify-center gap-2"
             >
               <span>Let's Build</span>
-              <span className="material-symbols-outlined text-xl text-red-600">handshake</span>
+              <span className="material-symbols-outlined text-xl text-[#b0342e]">handshake</span>
             </motion.button>
           </motion.div>
 
@@ -231,17 +231,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-black/15 flex flex-wrap items-center gap-4 sm:gap-8 text-[11px] sm:text-xs text-[#141414]/70 uppercase tracking-widest font-bold"
+            className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-[#32302f]/15 flex flex-wrap items-center gap-4 sm:gap-8 text-[11px] sm:text-xs text-[#32302f]/70 uppercase tracking-widest font-bold"
           >
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse live-dot" />
-              <span className="text-[#141414] font-black">Scaling</span>
-              <span className="text-red-600">Belvo Open Finance</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#b0342e] animate-pulse live-dot" />
+              <span className="text-[#32302f] font-black">Scaling</span>
+              <span className="text-[#b0342e]">Belvo Open Finance</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse live-dot" />
-              <span className="text-[#141414] font-black">Mentoring</span>
-              <span className="text-red-600">100+ Global Brands</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#b0342e] animate-pulse live-dot" />
+              <span className="text-[#32302f] font-black">Mentoring</span>
+              <span className="text-[#b0342e]">100+ Global Brands</span>
             </div>
           </motion.div>
         </motion.div>
@@ -264,25 +264,25 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="relative z-10 w-64 sm:w-80 glass-card p-3 shadow-2xl group border border-black/20 -rotate-1 hover:rotate-0 gradient-border-card corner-brackets"
+            className="relative z-10 w-64 sm:w-80 soft-card p-3 shadow-2xl group border border-[#32302f]/20 -rotate-1 hover:rotate-0"
             whileHover={{ y: -8 }}
           >
-            <div className="relative aspect-[4/5] overflow-hidden bg-[#141414] mask-reveal">
+            <div className="relative aspect-[4/5] overflow-hidden bg-[#0c0c0d] mask-reveal">
               <img
                 src={PORTFOLIO_INFO.portraitUrl}
                 alt="Hrishikesh Mishra Portrait"
                 className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
                 onError={(e) => { (e.target as HTMLImageElement).src = PORTFOLIO_INFO.hiringPortraitUrl; }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent opacity-70" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0d] via-transparent to-transparent opacity-70" />
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2 }}
-                className="absolute bottom-4 left-4 right-4 p-3 bg-white/90 border border-black/20 backdrop-blur-md glass-hover"
+                className="absolute bottom-4 left-4 right-4 p-3 bg-[#fcfcfc]/95 border border-[#32302f]/20 backdrop-blur-md glass-hover"
               >
-                <div className="text-xs font-black uppercase text-[#141414] tracking-wider">Hrishikesh Mishra</div>
-                <div className="text-[10px] text-red-600 uppercase tracking-widest font-black">Co-Founder & CEO</div>
+                <div className="text-xs font-black uppercase text-[#32302f] tracking-wider">Hrishikesh Mishra</div>
+                <div className="text-[10px] text-[#b0342e] uppercase tracking-widest font-black">Co-Founder & CEO</div>
               </motion.div>
             </div>
           </motion.div>
@@ -297,8 +297,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
         style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom))' }}
         onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
       >
-        <span className="text-[10px] uppercase tracking-[0.3em] font-black text-[#141414]">Scroll</span>
-        <span className="material-symbols-outlined text-[#141414] animate-bounce">expand_more</span>
+        <span className="text-[10px] uppercase tracking-[0.3em] font-black text-[#32302f]">Scroll</span>
+        <span className="material-symbols-outlined text-[#32302f] animate-bounce">expand_more</span>
       </motion.div>
     </section>
   );

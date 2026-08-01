@@ -17,6 +17,7 @@ import { QuoteSection } from './components/QuoteSection';
 import { ContactModal } from './components/ContactModal';
 import { Footer } from './components/Footer';
 import { TerminalCLI } from './components/TerminalCLI';
+import { useLenis } from './hooks/useLenis';
 
 const TestimonialsSection = lazy(() => import('./components/Testimonials').then(m => ({ default: m.TestimonialsSection })));
 const CodePlayground = lazy(() => import('./components/CodePlayground').then(m => ({ default: m.CodePlayground })));
@@ -32,6 +33,8 @@ export default function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
+  useLenis(loaded);
+
   useEffect(() => {
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -42,13 +45,13 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-white text-[#141414] selection:bg-[#141414] selection:text-white font-body">
+    <div className="relative min-h-screen bg-[#fcfcfc] text-[#32302f] selection:bg-[#b0342e] selection:text-white font-body">
       <AnimatePresence>
         {!loaded && <SignatureLoader onComplete={() => setLoaded(true)} />}
       </AnimatePresence>
 
       <div
-        className="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-red-500 via-[#141414] to-red-500 z-[200] transition-all duration-150"
+        className="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-[#3a3525] via-[#b0342e] to-[#3a3525] z-[200] transition-all duration-150"
         style={{ width: `${scrollProgress * 100}%` }}
       />
 

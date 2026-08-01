@@ -267,7 +267,7 @@ export const SignatureLoader: React.FC<SignatureLoaderProps> = ({ onComplete }) 
 
   return (
     <motion.div
-      className="fixed inset-0 z-[9999] bg-white premium-noise flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-[9999] bg-[#fcfcfc] premium-noise flex items-center justify-center overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ scaleY: 0, originY: 0 }}
@@ -354,7 +354,7 @@ export const SignatureLoader: React.FC<SignatureLoaderProps> = ({ onComplete }) 
           </g>
         </svg>
 
-        <div className="mt-9 w-40 sm:w-56 h-px bg-black/25" />
+        <div className="mt-9 w-40 sm:w-56 h-px bg-[#3a3525]/40" />
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -362,7 +362,7 @@ export const SignatureLoader: React.FC<SignatureLoaderProps> = ({ onComplete }) 
           transition={{ delay: T_TAGLINE, duration: 0.6 }}
           className="mt-5 text-center"
         >
-          <div className="text-[10px] sm:text-[12px] uppercase tracking-[0.35em] font-black text-[#141414]/80">
+          <div className="text-[10px] sm:text-[12px] uppercase tracking-[0.35em] font-black text-[#32302f]/80">
             Co-Founder &middot; CEO &middot; Angel Investor
           </div>
         </motion.div>

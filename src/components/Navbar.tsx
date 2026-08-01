@@ -49,9 +49,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 border-b cool-hairline ${
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 border-b ${
           scrolled
-            ? 'bg-[#f5f5f5]/90 backdrop-blur-xl border-black/15 shadow-sm'
+            ? 'bg-[#fcfcfc]/90 backdrop-blur-xl border-[#32302f]/15 shadow-[0_1px_0_rgba(50,48,47,0.06)]'
             : 'bg-transparent border-transparent'
         }`}
         style={{ paddingTop: 'env(safe-area-inset-top)' }}
@@ -66,10 +66,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             className="group flex flex-col justify-center min-w-0"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           >
-            <span className="font-display text-lg md:text-xl xl:text-2xl font-black tracking-tighter text-[#141414] uppercase group-hover:text-red-600 transition-colors truncate">
+            <span className="font-display text-lg md:text-xl xl:text-2xl font-black tracking-tighter text-[#32302f] uppercase group-hover:text-[#b0342e] transition-colors truncate">
               Hrishikesh Mishra.
             </span>
-            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-[#141414]/60 font-black -mt-1 truncate">
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-[#32302f]/60 font-black -mt-1 truncate">
               CEO & Angel Investor
             </span>
           </a>
@@ -83,11 +83,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                   href={link.href}
                   onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
                   className={`text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-300 relative py-1 whitespace-nowrap ${
-                    isActive ? 'text-[#141414]' : 'text-[#141414]/60 hover:text-[#141414]'
+                    isActive ? 'text-[#32302f]' : 'text-[#32302f]/60 hover:text-[#32302f]'
                   }`}
                 >
                   {link.name}
-                  <span className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-red-600 to-amber-500 transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                  <span className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-[#b0342e] to-[#3a3525] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                 </a>
               );
             })}
@@ -96,13 +96,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={onOpenContact}
-              className="px-6 py-2.5 bg-[#141414] text-white font-black text-xs uppercase tracking-widest hover:bg-red-600 transition-all duration-300 active:scale-95 shadow-md whitespace-nowrap"
+              className="pill pill-crimson"
             >
               Invest With Me
             </button>
             <button
               onClick={onOpenContact}
-              className="hidden xl:inline-flex px-6 py-2.5 border border-[#141414]/30 bg-white/60 text-[#141414] font-black text-xs uppercase tracking-widest hover:bg-[#141414] hover:text-white transition-all duration-300 whitespace-nowrap"
+              className="hidden xl:inline-flex pill pill-light"
             >
               Connect
             </button>
@@ -110,7 +110,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-[#141414] p-2 -mr-2 focus:outline-none border border-black/15 bg-white/70"
+            className="lg:hidden text-[#32302f] p-2 -mr-2 focus:outline-none border border-[#32302f]/20 bg-[#fcfcfc]/70"
             aria-label="Toggle navigation menu"
           >
             <span className="material-symbols-outlined text-2xl">
@@ -126,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[90] bg-[#f5f5f5]/98 backdrop-blur-3xl lg:hidden flex flex-col justify-between px-5 sm:px-8 border-b border-black/15 overflow-y-auto"
+            className="fixed inset-0 z-[90] bg-[#fcfcfc]/98 backdrop-blur-3xl lg:hidden flex flex-col justify-between px-5 sm:px-8 border-b border-[#32302f]/15 overflow-y-auto"
             style={{ paddingBottom: 'calc(1.5rem + env(safe-area-inset-bottom))', paddingTop: 'calc(6rem + env(safe-area-inset-top))' }}
           >
             <div className="flex flex-col gap-4">
@@ -135,10 +135,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                  className="text-xl sm:text-2xl font-display font-black uppercase text-[#141414] hover:text-red-600 transition-colors py-2.5 border-b border-black/10 flex items-center justify-between"
+                  className="text-xl sm:text-2xl font-display font-black uppercase text-[#32302f] hover:text-[#b0342e] transition-colors py-2.5 border-b border-[#32302f]/10 flex items-center justify-between"
                 >
                   {link.name}
-                  <span className="material-symbols-outlined text-red-600">arrow_forward</span>
+                  <span className="material-symbols-outlined text-[#b0342e]">arrow_forward</span>
                 </a>
               ))}
             </div>
@@ -146,11 +146,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             <div className="flex flex-col gap-4 pt-8">
               <button
                 onClick={() => { setMobileMenuOpen(false); onOpenContact(); }}
-                className="w-full py-4 bg-[#141414] text-[#f5f5f5] font-black text-center tracking-widest uppercase text-xs"
+                className="w-full py-4 bg-[#b0342e] text-[#fcfcfc] font-black text-center tracking-widest uppercase text-xs"
               >
                 Start A Dialogue
               </button>
-              <div className="text-center text-xs text-[#141414]/60 tracking-widest uppercase font-bold">
+              <div className="text-center text-xs text-[#32302f]/60 tracking-widest uppercase font-bold">
                 hello@hrishikesh.com
               </div>
             </div>

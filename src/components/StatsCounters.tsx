@@ -40,14 +40,14 @@ function AnimatedStat({ value, suffix, label, delay }: { value: string; suffix: 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      className="p-6 border border-white/10 bg-[#1c1c1c] flex flex-col justify-between hover:border-red-600 transition-all group last:col-span-2 md:last:col-span-1"
+      className="p-6 border border-white/10 bg-[#1a1813] flex flex-col justify-between hover:border-[#b0342e] transition-all group last:col-span-2 md:last:col-span-1"
     >
       <div>
-        <div className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[#f5f5f5] tracking-tighter mb-2 group-hover:text-red-500 transition-colors">
+        <div className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[#fcfcfc] tracking-tighter mb-2 group-hover:text-[#b0342e] transition-colors">
           {displayValue}
-          <span className="text-red-600">{suffix}</span>
+          <span className="text-[#b0342e]">{suffix}</span>
         </div>
-        <div className="text-[10px] uppercase tracking-[0.2em] font-black text-[#f5f5f5]/60 leading-tight">
+        <div className="text-[10px] uppercase tracking-[0.2em] font-black text-[#fcfcfc]/60 leading-tight">
           {label}
         </div>
       </div>
@@ -57,9 +57,9 @@ function AnimatedStat({ value, suffix, label, delay }: { value: string; suffix: 
 
 export const StatsCounters: React.FC = () => {
   return (
-    <section className="py-16 relative bg-[#141414] text-[#f5f5f5] border-y border-black/10 premium-noise">
+    <section className="py-16 relative vault-band premium-noise">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16">
-        <div className="text-[10px] font-mono text-emerald-500/70 mb-4 tracking-wider font-black uppercase"><span className="text-red-500">❯</span> ./metrics --live</div>
+        <div className="text-[10px] font-mono text-[#b0342e]/80 mb-4 tracking-wider font-black uppercase"><span className="text-[#b0342e]">❯</span> ./metrics --live</div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
           {PORTFOLIO_INFO.stats.map((stat, idx) => (
             <AnimatedStat key={stat.label} value={stat.value} suffix={stat.suffix} label={stat.label} delay={idx * 0.1} />

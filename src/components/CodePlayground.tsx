@@ -175,8 +175,8 @@ export const CodePlayground: React.FC = () => {
   const handleNext = () => setActiveIdx(prev => (prev + 1) % samples.length);
 
   return (
-    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-[#141414]">
-      <div className="dot-grid pointer-events-none opacity-20" />
+    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden vault-band">
+      <div className="dot-grid-light pointer-events-none opacity-20" />
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -188,16 +188,16 @@ export const CodePlayground: React.FC = () => {
           whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-          className="text-4xl md:text-5xl font-black mb-4 text-[#f5f5f5]"
+          className="text-4xl md:text-5xl font-black mb-4 text-[#fcfcfc]"
         >
-          <span className="text-red-600">❯</span> Code Playground
+          <span className="text-[#b0342e]">❯</span> Code Playground
         </motion.h2>
         <motion.p
           initial={{ clipPath: 'inset(0 100% 0 0)' }}
           whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.76, 0, 0.24, 1] }}
-          className="text-lg text-[#f5f5f5]/60 mb-16 font-mono"
+          className="text-lg text-[#fcfcfc]/60 mb-16 font-mono"
         >
           Live code samples from production systems I've architected.
         </motion.p>
@@ -210,8 +210,8 @@ export const CodePlayground: React.FC = () => {
                 onClick={() => setActiveIdx(i)}
                 className={`text-left px-4 py-3 text-xs font-black uppercase tracking-widest transition-all duration-300 border shrink-0 md:shrink whitespace-nowrap md:whitespace-normal ${
                   i === activeIdx
-                    ? 'bg-red-600 text-white border-red-600'
-                    : 'bg-transparent text-white/50 border-white/10 hover:text-white hover:border-white/30'
+                    ? 'bg-[#b0342e] text-white border-[#b0342e]'
+                    : 'bg-transparent text-[#fcfcfc]/50 border-[#fcfcfc]/10 hover:text-[#fcfcfc] hover:border-[#fcfcfc]/30'
                 }`}
               >
                 <span className="block text-[9px] opacity-60 mb-0.5" style={{ color: langColors[s.lang] }}>
@@ -223,39 +223,39 @@ export const CodePlayground: React.FC = () => {
           </div>
 
           <div className="relative">
-            <div className="absolute -inset-[1px] bg-gradient-to-br from-red-600/20 via-transparent to-red-600/10 rounded-none pointer-events-none" />
+            <div className="absolute -inset-[1px] bg-gradient-to-br from-[#b0342e]/20 via-transparent to-[#b0342e]/10 rounded-none pointer-events-none" />
 
-            <div className="relative bg-[#0a0a0a] border border-white/10 overflow-hidden">
-              <div className="flex items-center justify-between px-4 py-2.5 bg-[#141414] border-b border-white/10">
+            <div className="relative bg-[#0c0c0d] border border-[#fcfcfc]/10 overflow-hidden">
+              <div className="flex items-center justify-between px-4 py-2.5 bg-[#1a1813] border-b border-[#fcfcfc]/10">
                 <div className="flex items-center gap-3">
                   <div className="flex gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#b0342e]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#3a3525]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#686664]" />
                   </div>
-                  <span className="text-[10px] font-mono text-white/40 uppercase tracking-wider">
+                  <span className="text-[10px] font-mono text-[#fcfcfc]/40 uppercase tracking-wider">
                     {active.label}
                   </span>
                 </div>
                 <div className="flex gap-2">
                   <button
                     onClick={handlePrev}
-                    className="text-white/30 hover:text-white text-sm p-1"
+                    className="text-[#fcfcfc]/30 hover:text-[#fcfcfc] text-sm p-1"
                   >
                     <span className="material-symbols-outlined text-base">chevron_left</span>
                   </button>
-                  <span className="text-[10px] font-mono text-white/30 self-center">
+                  <span className="text-[10px] font-mono text-[#fcfcfc]/30 self-center">
                     {activeIdx + 1}/{samples.length}
                   </span>
                   <button
                     onClick={handleNext}
-                    className="text-white/30 hover:text-white text-sm p-1"
+                    className="text-[#fcfcfc]/30 hover:text-[#fcfcfc] text-sm p-1"
                   >
                     <span className="material-symbols-outlined text-base">chevron_right</span>
                   </button>
                   <button
                     onClick={handleCopy}
-                    className="text-white/30 hover:text-emerald-400 text-sm p-1 transition-colors"
+                    className="text-[#fcfcfc]/30 hover:text-[#b0342e] text-sm p-1 transition-colors"
                   >
                     <span className="material-symbols-outlined text-base">
                       {copied ? 'check' : 'content_copy'}
@@ -265,10 +265,10 @@ export const CodePlayground: React.FC = () => {
               </div>
 
               <pre className="p-5 overflow-x-auto font-mono text-sm leading-relaxed custom-scrollbar min-h-[280px]">
-                <code className="text-white/90 whitespace-pre">
+                <code className="text-[#fcfcfc]/90 whitespace-pre">
                   {displayedCode}
                   {isTyping && (
-                    <span className="inline-block w-2 h-4 bg-emerald-400 ml-0.5 animate-pulse" />
+                    <span className="inline-block w-2 h-4 bg-[#b0342e] ml-0.5 animate-pulse" />
                   )}
                 </code>
               </pre>

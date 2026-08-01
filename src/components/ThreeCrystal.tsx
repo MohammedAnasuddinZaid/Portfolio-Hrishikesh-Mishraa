@@ -27,9 +27,9 @@ export const ThreeCrystal: React.FC = () => {
     const wireframeGeometry = new THREE.IcosahedronGeometry(1.55, 1);
 
     const material = new THREE.MeshPhysicalMaterial({
-      color: 0xdc2626,
+      color: 0x3a3525,
       transparent: true,
-      opacity: 0.18,
+      opacity: 0.22,
       roughness: 0.15,
       metalness: 0.9,
       clearcoat: 0.5,
@@ -39,10 +39,10 @@ export const ThreeCrystal: React.FC = () => {
     });
 
     const wireframeMaterial = new THREE.MeshBasicMaterial({
-      color: 0xdc2626,
+      color: 0xb0342e,
       wireframe: true,
       transparent: true,
-      opacity: 0.4,
+      opacity: 0.35,
     });
 
     const core = new THREE.Mesh(geometry, material);
@@ -50,9 +50,9 @@ export const ThreeCrystal: React.FC = () => {
 
     const glowGeometry = new THREE.IcosahedronGeometry(1.6, 0);
     const glowMaterial = new THREE.MeshBasicMaterial({
-      color: 0xdc2626,
+      color: 0x3a3525,
       transparent: true,
-      opacity: 0.04,
+      opacity: 0.05,
       wireframe: false,
       side: THREE.BackSide,
     });
@@ -80,10 +80,10 @@ export const ThreeCrystal: React.FC = () => {
     particlesGeo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
     const particlesMat = new THREE.PointsMaterial({
-      color: 0xdc2626,
+      color: 0xb0342e,
       size: 0.025,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.4,
       blending: THREE.AdditiveBlending,
       sizeAttenuation: true,
     });
@@ -104,10 +104,10 @@ export const ThreeCrystal: React.FC = () => {
     ringParticlesGeo.setAttribute('position', new THREE.BufferAttribute(ringPositions, 3));
 
     const ringParticlesMat = new THREE.PointsMaterial({
-      color: 0xdc2626,
+      color: 0x3a3525,
       size: 0.04,
       transparent: true,
-      opacity: 0.5,
+      opacity: 0.55,
       blending: THREE.AdditiveBlending,
       sizeAttenuation: true,
     });
@@ -116,18 +116,18 @@ export const ThreeCrystal: React.FC = () => {
     scene.add(ringParticles);
     scene.add(group);
 
-    const ambientLight = new THREE.AmbientLight(0x402020, 0.6);
+    const ambientLight = new THREE.AmbientLight(0x3a3525, 0.6);
     scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0xdc2626, 6);
+    const pointLight = new THREE.PointLight(0xb0342e, 6);
     pointLight.position.set(4, 5, 5);
     scene.add(pointLight);
 
-    const secondaryLight = new THREE.PointLight(0xef4444, 3);
+    const secondaryLight = new THREE.PointLight(0x8a7b4f, 3);
     secondaryLight.position.set(-4, -3, -4);
     scene.add(secondaryLight);
 
-    const rimLight = new THREE.DirectionalLight(0xdc2626, 1.5);
+    const rimLight = new THREE.DirectionalLight(0xb0342e, 1.5);
     rimLight.position.set(0, -1, -3);
     scene.add(rimLight);
 
@@ -197,7 +197,7 @@ export const ThreeCrystal: React.FC = () => {
   return (
     <div className="relative w-full h-full min-h-[340px] sm:min-h-[500px] flex items-center justify-center">
       <div ref={mountRef} className="w-full h-full absolute inset-0" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent pointer-events-none opacity-60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#fcfcfc] via-transparent to-transparent pointer-events-none opacity-60" />
     </div>
   );
 };

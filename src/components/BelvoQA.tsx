@@ -31,17 +31,17 @@ function ServiceCard({ service, index }: { service: BelvoServiceItem; index: num
       viewport={{ once: true, margin: '-30px' }}
       transition={{ duration: 0.4, delay: index * 0.04 }}
       whileHover={{ y: -4, scale: 1.02 }}
-      className="p-4 sm:p-5 border border-black/15 bg-white hover:bg-white hover:border-red-500/40 transition-all duration-300 group cursor-default shadow-xs"
+      className="p-4 sm:p-5 border border-[#32302f]/15 bg-[#fcfcfc] hover:bg-[#fcfcfc] hover:border-[#b0342e]/40 transition-all duration-300 group cursor-default shadow-xs"
     >
       <div className="flex items-start gap-3">
-        <div className="w-9 h-9 bg-red-600/10 border border-red-600/20 flex items-center justify-center shrink-0 group-hover:bg-red-600 transition-colors duration-300">
-          <span className="material-symbols-outlined text-[#141414] text-lg group-hover:text-white group-hover:scale-110 transition-transform">
+        <div className="w-9 h-9 bg-[#b0342e]/10 border border-[#b0342e]/20 flex items-center justify-center shrink-0 group-hover:bg-[#b0342e] transition-colors duration-300">
+          <span className="material-symbols-outlined text-[#32302f] text-lg group-hover:text-white group-hover:scale-110 transition-transform">
             {service.icon}
           </span>
         </div>
         <div className="min-w-0">
-          <h4 className="text-[11px] font-black uppercase text-[#141414] tracking-wider mb-1">{service.name}</h4>
-          <p className="text-[11px] text-[#141414]/60 leading-relaxed font-medium">{service.description}</p>
+          <h4 className="text-[11px] font-black uppercase text-[#32302f] tracking-wider mb-1">{service.name}</h4>
+          <p className="text-[11px] text-[#32302f]/60 leading-relaxed font-medium">{service.description}</p>
         </div>
       </div>
     </motion.div>
@@ -119,7 +119,7 @@ export const BelvoQA: React.FC<BelvoQAProps> = ({ onOpenContact }) => {
   };
 
   return (
-    <section id="belvo" className="py-20 sm:py-28 lg:py-32 relative bg-[#f5f5f5] border-t border-black/10 dot-grid">
+    <section id="belvo" className="py-20 sm:py-28 lg:py-32 relative bg-[#fcfcfc] border-t border-[#32302f]/10 dot-grid">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -127,80 +127,80 @@ export const BelvoQA: React.FC<BelvoQAProps> = ({ onOpenContact }) => {
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
         >
-          <span className="text-[10px] uppercase tracking-[0.25em] font-black text-red-600 mb-3 block"><span className="text-emerald-500 font-mono mr-2">❯</span>04 // FEATURED VENTURE</span>
+          <span className="eyebrow mb-3 block"><span className="text-[#b0342e] font-mono mr-2">❯</span>04 // FEATURED VENTURE</span>
           <motion.h2
             initial={{ clipPath: 'inset(0 100% 0 0)' }}
             whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.77, 0, 0.18, 1] as const }}
-            className="font-display text-4xl sm:text-6xl font-black uppercase text-[#141414] tracking-tighter mb-6"
+            className="font-display text-4xl sm:text-6xl font-black uppercase text-[#32302f] tracking-tighter mb-6"
           >
-            Belvo: <span className="text-red-600">Full-Stack</span> Digital Services.
+            Belvo: <span className="text-[#b0342e]">Full-Stack</span> Digital Services.
           </motion.h2>
-          <p className="text-[#141414]/80 text-base sm:text-lg font-medium">{BELVO_INFO.description}</p>
+          <p className="text-[#32302f]/80 text-base sm:text-lg font-medium">{BELVO_INFO.description}</p>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto border border-black/15 shadow-xl"
+          className="max-w-3xl mx-auto border border-[#32302f]/15 shadow-xl"
         >
-          <div className="flex items-center justify-between px-5 py-3 bg-[#141414] border-b border-black/10 premium-noise">
+          <div className="flex items-center justify-between px-5 py-3 bg-[#0c0c0d] border-b border-[#fcfcfc]/10 premium-noise">
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-red-500" />
-              <span className="w-3 h-3 rounded-full bg-yellow-500" />
-              <span className="w-3 h-3 rounded-full bg-emerald-500" />
+              <span className="w-3 h-3 rounded-full bg-[#b0342e]" />
+              <span className="w-3 h-3 rounded-full bg-[#3a3525]" />
+              <span className="w-3 h-3 rounded-full bg-[#686664]" />
               <span className="text-[10px] font-mono text-white/60 ml-2 uppercase tracking-wider font-black">Belvo Terminal</span>
             </div>
           </div>
 
           <div
             ref={terminalScrollRef}
-            className="p-5 sm:p-6 font-mono text-sm space-y-1.5 min-h-[200px] max-h-[360px] overflow-y-auto custom-scrollbar bg-[#eaeaea]"
+            className="p-5 sm:p-6 font-mono text-sm space-y-1.5 min-h-[200px] max-h-[360px] overflow-y-auto custom-scrollbar bg-[#faf8f5]"
           >
             {entries.length === 0 ? (
-              <div className="text-[#141414]/50 text-xs leading-relaxed">
-                <p className="mb-2"><span className="text-emerald-600">❯</span> Belvo Terminal ready.</p>
+              <div className="text-[#32302f]/50 text-xs leading-relaxed">
+                <p className="mb-2"><span className="text-[#b0342e]">❯</span> Belvo Terminal ready.</p>
                 <p>Ask about Belvo's services, contact info, or location. Click a quick question below or type your own.</p>
-                <p className="text-[#141414]/20 mt-1">{'─'.repeat(40)}</p>
+                <p className="text-[#32302f]/20 mt-1">{'─'.repeat(40)}</p>
               </div>
             ) : (
               entries.map((entry, i) => (
                 <div key={i}>
                   {entry.question && (
-                    <p className="text-emerald-700"><span className="text-red-500">❯</span> {entry.question}</p>
+                    <p className="text-[#3a3525]"><span className="text-[#b0342e]">❯</span> {entry.question}</p>
                   )}
-                  <p className="text-[#141414]/80 whitespace-pre-wrap">
+                  <p className="text-[#32302f]/80 whitespace-pre-wrap">
                     {entry.answer}
-                    {entry.isTyping && <span className="inline-block w-2 h-4 bg-emerald-500 ml-0.5 animate-pulse" />}
+                    {entry.isTyping && <span className="inline-block w-2 h-4 bg-[#b0342e] ml-0.5 animate-pulse" />}
                   </p>
                 </div>
               ))
             )}
           </div>
 
-          <div className="px-5 sm:px-6 pb-4 flex flex-wrap gap-2 bg-[#eaeaea]">
+          <div className="px-5 sm:px-6 pb-4 flex flex-wrap gap-2 bg-[#faf8f5]">
             {quickQuestions.map(qq => (
               <button
                 key={qq.label}
                 onClick={() => { ask(qq.q); inputRef.current?.focus(); }}
-                className="px-3 py-1.5 text-[10px] font-black uppercase tracking-wider border border-black/20 text-[#141414]/60 hover:text-[#141414] hover:border-red-500/60 hover:bg-red-600/10 transition-all"
+                className="px-3 py-1.5 text-[10px] font-black uppercase tracking-wider border border-[#32302f]/20 text-[#32302f]/60 hover:text-[#32302f] hover:border-[#b0342e]/60 hover:bg-[#b0342e]/10 transition-all"
               >
                 {qq.label}
               </button>
             ))}
           </div>
 
-          <form onSubmit={handleSubmit} className="flex items-center gap-2 px-5 sm:px-6 pb-5 bg-[#eaeaea]">
-            <span className="text-emerald-600 text-sm font-mono">❯</span>
+          <form onSubmit={handleSubmit} className="flex items-center gap-2 px-5 sm:px-6 pb-5 bg-[#faf8f5]">
+            <span className="text-[#b0342e] text-sm font-mono">❯</span>
             <input
               ref={inputRef}
               type="text"
               value={input}
               onChange={e => setInput(e.target.value)}
               placeholder="Ask about Belvo..."
-              className="flex-1 bg-transparent text-[#141414]/80 text-sm outline-none placeholder-[#141414]/30 font-mono"
+              className="flex-1 bg-transparent text-[#32302f]/80 text-sm outline-none placeholder-[#32302f]/30 font-mono"
               autoComplete="off"
               spellCheck={false}
             />
@@ -215,7 +215,7 @@ export const BelvoQA: React.FC<BelvoQAProps> = ({ onOpenContact }) => {
         >
           <button
             onClick={() => setShowServices(!showServices)}
-            className="px-6 py-3 text-[10px] font-black uppercase tracking-widest border border-black/20 text-[#141414]/60 hover:text-[#141414] hover:border-black/40 transition-all"
+            className="pill pill-light text-[10px]"
           >
             {showServices ? '▴ Hide All Services' : '▾ View All 16 Services'}
           </button>
@@ -230,7 +230,7 @@ export const BelvoQA: React.FC<BelvoQAProps> = ({ onOpenContact }) => {
               className="overflow-hidden mt-8"
             >
               <div className="text-center mb-6">
-                <span className="text-xs text-[#141414]/50 font-mono">16 Service Verticals • 24hr Response • Mumbai</span>
+                <span className="text-xs text-[#32302f]/50 font-mono">16 Service Verticals • 24hr Response • Mumbai</span>
               </div>
               <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                 {BELVO_INFO.services.map((service, i) => (
@@ -249,12 +249,12 @@ export const BelvoQA: React.FC<BelvoQAProps> = ({ onOpenContact }) => {
         >
           <button
             onClick={onOpenContact}
-            className="px-10 py-4 bg-red-600 text-white font-black text-xs uppercase tracking-widest hover:bg-red-700 transition-all inline-flex items-center gap-3 shadow-xl hover:scale-105"
+            className="pill pill-crimson inline-flex items-center gap-3 shadow-xl"
           >
             <span>Start Your Project</span>
             <span className="material-symbols-outlined text-lg">arrow_forward</span>
           </button>
-          <p className="text-[#141414]/50 text-xs mt-4 font-medium">Expect a reply within {BELVO_INFO.responseTime}</p>
+          <p className="text-[#32302f]/50 text-xs mt-4 font-medium">Expect a reply within {BELVO_INFO.responseTime}</p>
         </motion.div>
       </div>
     </section>
