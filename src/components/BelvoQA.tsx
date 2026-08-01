@@ -31,7 +31,7 @@ function ServiceCard({ service, index }: { service: BelvoServiceItem; index: num
       viewport={{ once: true, margin: '-30px' }}
       transition={{ duration: 0.4, delay: index * 0.04 }}
       whileHover={{ y: -4, scale: 1.02 }}
-      className="p-4 sm:p-5 border border-black/10 bg-white hover:bg-white hover:border-red-500/40 transition-all duration-300 group cursor-default shadow-xs"
+      className="p-4 sm:p-5 border border-black/15 bg-white hover:bg-white hover:border-red-500/40 transition-all duration-300 group cursor-default shadow-xs"
     >
       <div className="flex items-start gap-3">
         <div className="w-9 h-9 bg-red-600/10 border border-red-600/20 flex items-center justify-center shrink-0 group-hover:bg-red-600 transition-colors duration-300">
@@ -119,13 +119,13 @@ export const BelvoQA: React.FC<BelvoQAProps> = ({ onOpenContact }) => {
   };
 
   return (
-    <section id="belvo" className="py-24 lg:py-32 relative bg-[#f5f5f5] border-t border-black/10 dot-grid">
+    <section id="belvo" className="py-20 sm:py-28 lg:py-32 relative bg-[#f5f5f5] border-t border-black/10 dot-grid">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
         >
           <span className="text-[10px] uppercase tracking-[0.25em] font-black text-red-600 mb-3 block"><span className="text-emerald-500 font-mono mr-2">❯</span>04 // FEATURED VENTURE</span>
           <motion.h2
@@ -232,7 +232,7 @@ export const BelvoQA: React.FC<BelvoQAProps> = ({ onOpenContact }) => {
               <div className="text-center mb-6">
                 <span className="text-xs text-[#141414]/50 font-mono">16 Service Verticals • 24hr Response • Mumbai</span>
               </div>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+              <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                 {BELVO_INFO.services.map((service, i) => (
                   <ServiceCard key={service.id} service={service} index={i} />
                 ))}

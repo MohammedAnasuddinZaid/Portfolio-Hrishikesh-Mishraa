@@ -49,27 +49,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 border-b ${
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 border-b cool-hairline ${
           scrolled
-            ? 'h-20 bg-[#f5f5f5]/90 backdrop-blur-xl border-black/15 shadow-sm'
-            : 'h-24 bg-transparent border-transparent'
+            ? 'bg-[#f5f5f5]/90 backdrop-blur-xl border-black/15 shadow-sm'
+            : 'bg-transparent border-transparent'
         }`}
+        style={{ paddingTop: 'env(safe-area-inset-top)' }}
       >
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16 h-full flex items-center justify-between">
+        <div
+          className={`max-w-[1440px] mx-auto px-5 sm:px-12 lg:px-16 flex items-center justify-between transition-all duration-500 ${
+            scrolled ? 'h-14 sm:h-20' : 'h-16 sm:h-24'
+          }`}
+        >
           <a
             href="#"
-            className="group flex flex-col justify-center"
+            className="group flex flex-col justify-center min-w-0"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           >
-            <span className="font-display text-xl sm:text-2xl font-black tracking-tighter text-[#141414] uppercase group-hover:text-red-600 transition-colors">
+            <span className="font-display text-lg md:text-xl xl:text-2xl font-black tracking-tighter text-[#141414] uppercase group-hover:text-red-600 transition-colors truncate">
               Hrishikesh Mishra.
             </span>
-            <span className="text-[10px] uppercase tracking-[0.25em] text-[#141414]/60 font-black -mt-1">
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-[#141414]/60 font-black -mt-1 truncate">
               CEO & Angel Investor
             </span>
           </a>
 
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.slice(1);
               return (
@@ -77,12 +82,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                  className={`text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-300 relative py-1 ${
+                  className={`text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-300 relative py-1 whitespace-nowrap ${
                     isActive ? 'text-[#141414]' : 'text-[#141414]/60 hover:text-[#141414]'
                   }`}
                 >
                   {link.name}
-                  <span className={`absolute -bottom-1 left-0 h-[2px] bg-[#141414] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                  <span className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-red-600 to-amber-500 transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                 </a>
               );
             })}
@@ -91,13 +96,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={onOpenContact}
-              className="px-6 py-2.5 bg-[#141414] text-white font-black text-xs uppercase tracking-widest hover:bg-red-600 transition-all duration-300 active:scale-95 shadow-md"
+              className="px-6 py-2.5 bg-[#141414] text-white font-black text-xs uppercase tracking-widest hover:bg-red-600 transition-all duration-300 active:scale-95 shadow-md whitespace-nowrap"
             >
               Invest With Me
             </button>
             <button
               onClick={onOpenContact}
-              className="px-6 py-2.5 border border-[#141414]/30 bg-white/60 text-[#141414] font-black text-xs uppercase tracking-widest hover:bg-[#141414] hover:text-white transition-all duration-300"
+              className="hidden xl:inline-flex px-6 py-2.5 border border-[#141414]/30 bg-white/60 text-[#141414] font-black text-xs uppercase tracking-widest hover:bg-[#141414] hover:text-white transition-all duration-300 whitespace-nowrap"
             >
               Connect
             </button>
@@ -105,10 +110,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-[#141414] p-2 focus:outline-none"
+            className="lg:hidden text-[#141414] p-2 -mr-2 focus:outline-none border border-black/15 bg-white/70"
             aria-label="Toggle navigation menu"
           >
-            <span className="material-symbols-outlined text-3xl">
+            <span className="material-symbols-outlined text-2xl">
               {mobileMenuOpen ? 'close' : 'menu'}
             </span>
           </button>
@@ -121,15 +126,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 top-20 z-[90] bg-[#f5f5f5]/98 backdrop-blur-3xl lg:hidden flex flex-col justify-between p-8 border-b border-black/15 overflow-y-auto"
+            className="fixed inset-0 z-[90] bg-[#f5f5f5]/98 backdrop-blur-3xl lg:hidden flex flex-col justify-between px-5 sm:px-8 border-b border-black/15 overflow-y-auto"
+            style={{ paddingBottom: 'calc(1.5rem + env(safe-area-inset-bottom))', paddingTop: 'calc(6rem + env(safe-area-inset-top))' }}
           >
-            <div className="flex flex-col gap-6 pt-6">
+            <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                  className="text-2xl font-display font-black uppercase text-[#141414] hover:text-red-600 transition-colors py-2 border-b border-black/10 flex items-center justify-between"
+                  className="text-xl sm:text-2xl font-display font-black uppercase text-[#141414] hover:text-red-600 transition-colors py-2.5 border-b border-black/10 flex items-center justify-between"
                 >
                   {link.name}
                   <span className="material-symbols-outlined text-red-600">arrow_forward</span>

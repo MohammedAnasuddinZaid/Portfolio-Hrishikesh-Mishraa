@@ -20,9 +20,9 @@ export const JourneyTimeline: React.FC = () => {
   }, []);
 
   return (
-    <section id="journey" className="py-24 lg:py-32 relative bg-[#f5f5f5] border-t border-black/10 dot-grid">
+    <section id="journey" className="py-20 sm:py-28 lg:py-32 relative bg-[#f5f5f5] border-t border-black/10 dot-grid">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
           <span className="text-[10px] uppercase tracking-[0.25em] font-black text-red-600 mb-3 block"><span className="text-emerald-500 font-mono mr-2">❯</span>03 // TRAJECTORY</span>
           <motion.h2
             initial={{ clipPath: 'inset(0 100% 0 0)' }}
@@ -40,7 +40,7 @@ export const JourneyTimeline: React.FC = () => {
           <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-[2px] bg-black/20 -translate-x-1/2" />
           <div className="absolute left-4 sm:left-1/2 top-0 w-[2px] bg-gradient-to-b from-red-500 to-[#141414] -translate-x-1/2 transition-all duration-300" style={{ height: `${Math.min(progressHeight, 100)}%` }} />
 
-          <div className="space-y-16">
+          <div className="space-y-12 sm:space-y-16">
             {TIMELINE_LIST.map((step, idx) => {
               const isEven = idx % 2 === 0;
               const isActive = activeTab === step.id;
@@ -72,7 +72,7 @@ export const JourneyTimeline: React.FC = () => {
                     <div
                       onClick={() => setActiveTab(step.id)}
                       className={`glow-card p-6 sm:p-8 border cursor-pointer ${
-                        isActive ? 'border-black bg-white shadow-xl' : 'border-black/15 bg-white/70'
+                        isActive ? 'border-black bg-white shadow-xl' : 'border-black/20 bg-white/70'
                       }`}
                     >
                       <div className={`text-[10px] font-black uppercase tracking-widest mb-1 ${step.isCurrent ? 'text-red-600' : 'text-red-600'}`}>

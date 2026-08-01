@@ -44,9 +44,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
               </div>
               <div>
                 <span className="text-[#f5f5f5]/50 block mb-1 font-black text-[10px] uppercase">Thought Leadership Blog:</span>
-                <a href={PORTFOLIO_INFO.blogUrl} target="_blank" rel="noopener noreferrer" className="text-red-400 font-bold hover:underline flex items-center gap-1">
-                  <span>{PORTFOLIO_INFO.blogUrl}</span>
-                  <span className="material-symbols-outlined text-xs">open_in_new</span>
+                <a href={PORTFOLIO_INFO.blogUrl} target="_blank" rel="noopener noreferrer" className="text-red-400 font-bold hover:underline flex items-center gap-1 min-w-0">
+                  <span className="break-all">{PORTFOLIO_INFO.blogUrl}</span>
+                  <span className="material-symbols-outlined text-xs shrink-0">open_in_new</span>
                 </a>
               </div>
               <div className="pt-2">

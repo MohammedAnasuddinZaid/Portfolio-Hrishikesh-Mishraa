@@ -31,7 +31,7 @@ function TiltCard({ item, index, onClick }: { item: ExpertiseItem; index: number
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      className="glow-card p-8 sm:p-10 cursor-pointer flex flex-col justify-between group border border-black/15 bg-white shadow-xs"
+      className="glow-card p-7 sm:p-10 cursor-pointer flex flex-col justify-between group premium-hairline bg-white"
       style={{
         transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
         transition: 'transform 0.1s ease-out',
@@ -57,11 +57,11 @@ export const ExpertiseSection: React.FC<ExpertiseSectionProps> = ({ onOpenContac
   const [selectedExpertise, setSelectedExpertise] = useState<ExpertiseItem | null>(null);
 
   return (
-    <section id="expertise" className="py-24 lg:py-32 relative bg-[#f5f5f5] border-t border-black/10 dot-grid">
+    <section id="expertise" className="py-20 sm:py-28 lg:py-32 relative bg-[#f5f5f5] border-t border-black/10 dot-grid">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 gap-6">
           <div>
-            <span className="text-[10px] uppercase tracking-[0.25em] font-black text-red-600 mb-3 block"><span className="text-emerald-500 font-mono mr-2">❯</span>02 // CAPABILITIES</span>
+            <span className="text-[10px] uppercase tracking-[0.25em] font-black text-red-600 mb-3 block cool-chip"><span className="text-emerald-500 font-mono mr-2">❯</span>02 // CAPABILITIES</span>
             <motion.h2
               initial={{ clipPath: 'inset(0 100% 0 0)' }}
               whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
@@ -85,7 +85,7 @@ export const ExpertiseSection: React.FC<ExpertiseSectionProps> = ({ onOpenContac
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="animated-dark-border mt-16 p-8 sm:p-12 bg-[#141414] text-[#f5f5f5] flex flex-col sm:flex-row items-center justify-between gap-8 text-center sm:text-left shadow-xl premium-noise"
+          className="animated-dark-border mt-12 sm:mt-16 p-8 sm:p-12 bg-[#141414] text-[#f5f5f5] flex flex-col sm:flex-row items-center justify-between gap-8 text-center sm:text-left shadow-xl premium-noise"
         >
           <div>
             <div className="font-display text-2xl sm:text-3xl font-black uppercase mb-2">"Innovation is the result of relentless focus."</div>
@@ -103,7 +103,7 @@ export const ExpertiseSection: React.FC<ExpertiseSectionProps> = ({ onOpenContac
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#f5f5f5] max-w-2xl w-full p-8 sm:p-10 border border-black/30 relative overflow-hidden max-h-[90vh] overflow-y-auto shadow-2xl"
+              className="bg-[#f5f5f5] max-w-2xl w-full pt-16 sm:pt-10 p-8 sm:p-10 border border-black/30 relative overflow-hidden max-h-[90vh] overflow-y-auto shadow-2xl"
             >
               <button onClick={() => setSelectedExpertise(null)} className="absolute top-6 right-6 text-[#141414] hover:text-red-600 p-2">
                 <span className="material-symbols-outlined text-2xl">close</span>
@@ -129,9 +129,9 @@ export const ExpertiseSection: React.FC<ExpertiseSectionProps> = ({ onOpenContac
                   ))}
                 </div>
               </div>
-              <div className="flex justify-end gap-4 pt-6 border-t border-black/15">
-                <button onClick={() => setSelectedExpertise(null)} className="px-6 py-3 border border-black/30 text-[#141414] font-black text-xs uppercase tracking-widest hover:bg-black/10">Close</button>
-                <button onClick={() => { setSelectedExpertise(null); onOpenContact(); }} className="px-6 py-3 bg-[#141414] text-[#f5f5f5] font-black text-xs uppercase tracking-widest hover:bg-red-600">Discuss Project</button>
+              <div className="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-6 border-t border-black/15">
+                <button onClick={() => setSelectedExpertise(null)} className="w-full sm:w-auto px-6 py-3 border border-black/30 text-[#141414] font-black text-xs uppercase tracking-widest hover:bg-black/10">Close</button>
+                <button onClick={() => { setSelectedExpertise(null); onOpenContact(); }} className="w-full sm:w-auto px-6 py-3 bg-[#141414] text-[#f5f5f5] font-black text-xs uppercase tracking-widest hover:bg-red-600">Discuss Project</button>
               </div>
             </motion.div>
           </div>

@@ -11,8 +11,8 @@ export const PORTFOLIO_INFO = {
   secondaryEmail: "realhrishikeshmishra@gmail.com",
   blogUrl: "https://www.hrishikesmishra.buzz",
   location: "India & Global",
-  portraitUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuAwfl2CQQbpAVIQVfxc_YIjGjgxjzxJ_TY80mPQMBrSh7PVTUr-L1-0WPcFY0XemVrh2zHHO1-g7Xh9fj9XIUZzbHM0o3RmRn6siEVWhaddbvxn8PujNQP2J4eicJfUgloS2qAcyoayLuryANC0sup1N3RsKHMe-M9xZd727-_VZW4tlq2Z_OFG8jH5BQIaqC4nuwUoxn-BUwRwXDAPIRhInaK2C47UAK6hPs2jkbyWnshs5NRBOR3BJg",
-  hiringPortraitUrl: "https://media.licdn.com/dms/image/v2/D4D03AQE1Z9s1yq8yJg/profile-displayphoto-shrink_800_800/0/1718291823912?e=1726099200&v=beta&t=H3-1R5iS3yU",
+  portraitUrl: "/portrait.jpg",
+  hiringPortraitUrl: "/portrait.jpg",
   stats: [
     { label: "Brands & Startups Scaled", value: "100+", suffix: "" },
     { label: "Monthly API Requests", value: "100M", suffix: "+" },

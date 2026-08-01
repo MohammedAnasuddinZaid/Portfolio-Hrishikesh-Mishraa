@@ -32,12 +32,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+        <div className="fixed inset-0 z-[150] flex items-start sm:items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="max-w-3xl w-full p-8 sm:p-12 border border-black/30 bg-[#f5f5f5] text-[#141414] relative overflow-hidden my-8 shadow-2xl"
+            className="max-w-3xl w-full p-6 sm:p-12 border border-black/30 bg-[#f5f5f5] text-[#141414] relative overflow-hidden my-auto shadow-2xl"
           >
             <button onClick={onClose} className="absolute top-6 right-6 text-[#141414]/60 hover:text-[#141414] p-2 hover:bg-black/5 transition-colors">
               <span className="material-symbols-outlined text-2xl">close</span>
@@ -91,9 +91,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                       <a href={`mailto:${PORTFOLIO_INFO.secondaryEmail}`} className="text-red-600 font-black hover:underline">{PORTFOLIO_INFO.secondaryEmail}</a>
                     </div>
                   </div>
-                  <div className="flex justify-end gap-4 pt-4">
-                    <button type="button" onClick={onClose} className="px-6 py-3.5 border border-black/20 text-[#141414] font-black text-xs uppercase tracking-widest hover:bg-black/5 transition-colors">Cancel</button>
-                    <button type="submit" disabled={loading} className="px-8 py-3.5 bg-red-600 hover:bg-red-700 text-white font-black text-xs uppercase tracking-widest transition-all shadow-xl flex items-center gap-2">
+                  <div className="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-4">
+                    <button type="button" onClick={onClose} className="w-full sm:w-auto px-6 py-3.5 border border-black/20 text-[#141414] font-black text-xs uppercase tracking-widest hover:bg-black/5 transition-colors">Cancel</button>
+                    <button type="submit" disabled={loading} className="w-full sm:w-auto justify-center px-8 py-3.5 bg-red-600 hover:bg-red-700 text-white font-black text-xs uppercase tracking-widest transition-all shadow-xl flex items-center gap-2">
                       {loading ? (
                         <span className="flex items-center gap-2"><span className="material-symbols-outlined text-sm animate-spin">sync</span>Sending...</span>
                       ) : (

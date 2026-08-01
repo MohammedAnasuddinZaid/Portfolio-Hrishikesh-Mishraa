@@ -12,9 +12,9 @@ export const InvestmentsSection: React.FC<InvestmentsSectionProps> = ({ onOpenCo
   const filtered = activeCategory === 'ALL' ? PORTFOLIO_INVESTMENTS : PORTFOLIO_INVESTMENTS.filter(i => i.category === activeCategory);
 
   return (
-    <section id="investments" className="py-24 lg:py-32 relative bg-[#f5f5f5] border-t border-black/10 dot-grid">
+    <section id="investments" className="py-20 sm:py-28 lg:py-32 relative bg-[#f5f5f5] border-t border-black/10 dot-grid">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-8">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 sm:mb-16 gap-8">
           <div>
             <span className="text-[10px] uppercase tracking-[0.25em] font-black text-red-600 mb-3 block"><span className="text-emerald-500 font-mono mr-2">❯</span>05 // CAPITAL & CONVICTION</span>
             <motion.h2
@@ -42,7 +42,7 @@ export const InvestmentsSection: React.FC<InvestmentsSectionProps> = ({ onOpenCo
           </div>
         </div>
 
-        <div className="focus-group grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="focus-group grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
           {filtered.map((item, idx) => (
             <div className="focus-item">
             <motion.div
@@ -52,7 +52,7 @@ export const InvestmentsSection: React.FC<InvestmentsSectionProps> = ({ onOpenCo
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.4, delay: idx * 0.05 }}
-              className="glow-card p-8 border border-black/15 bg-white flex flex-col justify-between group shadow-xs"
+              className="glow-card p-7 sm:p-8 premium-hairline bg-white flex flex-col justify-between group"
             >
               <div>
                 <div className="flex items-center justify-between mb-8">

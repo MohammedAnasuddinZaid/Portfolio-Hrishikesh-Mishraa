@@ -12,9 +12,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenContact 
   const toggleService = (title: string) => setSelectedServices(prev => prev.includes(title) ? prev.filter(s => s !== title) : [...prev, title]);
 
   return (
-    <section id="services" className="py-24 lg:py-32 relative bg-[#f5f5f5] border-t border-black/10 dot-grid">
+    <section id="services" className="py-20 sm:py-28 lg:py-32 relative bg-[#f5f5f5] border-t border-black/10 dot-grid">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
           <span className="text-[10px] uppercase tracking-[0.25em] font-black text-red-600 mb-3 block"><span className="text-emerald-500 font-mono mr-2">❯</span>06 // ENGAGEMENT</span>
           <motion.h2
             initial={{ clipPath: 'inset(0 100% 0 0)' }}
@@ -28,7 +28,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenContact 
           <p className="text-[#141414]/80 text-base sm:text-lg font-medium">High-impact strategic consulting tailored for high-potential ventures.</p>
         </div>
 
-        <div className="focus-group grid md:grid-cols-2 gap-8 mb-20">
+        <div className="focus-group grid md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-20">
           {SERVICES_LIST.map((service, idx) => (
             <div className="focus-item">
             <motion.div
@@ -37,7 +37,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenContact 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="glow-card p-8 sm:p-12 border border-black/15 bg-white flex flex-col justify-between group shadow-xs"
+              className="glow-card p-7 sm:p-12 premium-hairline bg-white flex flex-col justify-between group"
             >
               <div>
                 <div className="flex items-center justify-between mb-8">
@@ -67,7 +67,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenContact 
           ))}
         </div>
 
-        <div className="p-8 sm:p-14 border border-black/20 bg-white shadow-2xl">
+        <div className="p-6 sm:p-8 lg:p-14 premium-hairline bg-white">
           <div className="max-w-3xl mb-10">
             <span className="text-[10px] font-black uppercase tracking-widest text-red-600 mb-2 block">INTERACTIVE SCOPE CALCULATOR</span>
             <h3 className="font-display text-2xl sm:text-4xl font-black uppercase text-[#141414] mb-4">Configure Your Custom Engagement Scope.</h3>

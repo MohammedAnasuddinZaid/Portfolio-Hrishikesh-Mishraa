@@ -40,7 +40,7 @@ function AnimatedStat({ value, suffix, label, delay }: { value: string; suffix: 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      className="p-6 border border-white/10 bg-[#1c1c1c] flex flex-col justify-between hover:border-red-600 transition-all group"
+      className="p-6 border border-white/10 bg-[#1c1c1c] flex flex-col justify-between hover:border-red-600 transition-all group last:col-span-2 md:last:col-span-1"
     >
       <div>
         <div className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[#f5f5f5] tracking-tighter mb-2 group-hover:text-red-500 transition-colors">

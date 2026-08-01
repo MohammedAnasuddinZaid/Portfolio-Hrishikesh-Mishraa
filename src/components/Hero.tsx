@@ -55,7 +55,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
   const bgY = (mousePos.y - 0.5) * 8;
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen pt-32 pb-20 flex items-center bg-white perspective-container">
+    <section ref={sectionRef} className="relative min-h-svh pt-24 sm:pt-32 pb-16 sm:pb-20 flex items-center bg-white perspective-container">
       <AnimatePresence>
         {!revealDone && (
           <>
@@ -146,10 +146,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-3 px-4 py-2 glass-pill mb-8 w-fit border border-black/20 shadow-xs"
+            className="inline-flex items-center gap-3 px-4 py-2 glass-pill mb-8 w-fit border border-black/20 shadow-xs flex-wrap"
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#141414]">
+            <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse shrink-0" />
+            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] text-[#141414]">
               CO-FOUNDER &bull; CEO &bull; ANGEL INVESTOR
             </span>
           </motion.div>
@@ -203,13 +203,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="flex flex-wrap items-center gap-4 sm:gap-6"
+            className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-4 sm:gap-6"
           >
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => document.querySelector('#expertise')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 sm:px-10 sm:py-5 bg-[#141414] hover:bg-red-600 text-white font-black text-xs sm:text-sm uppercase tracking-widest transition-all shadow-xl active:scale-95 flex items-center gap-3 group"
+              className="px-8 py-4 sm:px-10 sm:py-5 bg-[#141414] hover:bg-red-600 text-white font-black text-xs sm:text-sm uppercase tracking-widest transition-all shadow-xl active:scale-95 flex items-center justify-center gap-3 group"
             >
               <span>Explore Expertise</span>
               <span className="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
@@ -219,7 +219,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={onOpenContact}
-              className="px-8 py-4 sm:px-10 sm:py-5 border border-[#141414]/30 bg-white/70 text-[#141414] font-black text-xs sm:text-sm uppercase tracking-widest transition-all hover:bg-[#141414] hover:text-white flex items-center gap-2"
+              className="px-8 py-4 sm:px-10 sm:py-5 border border-[#141414]/30 bg-white/70 text-[#141414] font-black text-xs sm:text-sm uppercase tracking-widest transition-all hover:bg-[#141414] hover:text-white flex items-center justify-center gap-2"
             >
               <span>Let's Build</span>
               <span className="material-symbols-outlined text-xl text-red-600">handshake</span>
@@ -231,7 +231,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="mt-12 pt-8 border-t border-black/15 flex flex-wrap items-center gap-8 text-xs text-[#141414]/70 uppercase tracking-widest font-bold"
+            className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-black/15 flex flex-wrap items-center gap-4 sm:gap-8 text-[11px] sm:text-xs text-[#141414]/70 uppercase tracking-widest font-bold"
           >
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse live-dot" />
@@ -250,7 +250,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-5 xl:col-span-5 relative flex items-center justify-center min-h-[480px]"
+          className="lg:col-span-5 xl:col-span-5 relative flex items-center justify-center min-h-[300px] sm:min-h-[480px] mt-8 lg:mt-0"
           style={{
             transform: `perspective(1200px) rotateY(${(mousePos.x - 0.5) * 3}deg) rotateX(${(mousePos.y - 0.5) * -3}deg) translateY(${-scrollY * 0.08}px)`,
             transition: 'transform 0.15s ease-out',
@@ -264,7 +264,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="relative z-10 w-72 sm:w-80 glass-card p-3 shadow-2xl group border border-black/20 -rotate-1 hover:rotate-0 gradient-border-card"
+            className="relative z-10 w-64 sm:w-80 glass-card p-3 shadow-2xl group border border-black/20 -rotate-1 hover:rotate-0 gradient-border-card corner-brackets"
             whileHover={{ y: -8 }}
           >
             <div className="relative aspect-[4/5] overflow-hidden bg-[#141414] mask-reveal">
@@ -293,7 +293,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 0.6, y: 0 }}
         transition={{ delay: 1.5, repeat: Infinity, repeatType: 'reverse', duration: 2 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 hover:opacity-100 transition-opacity cursor-pointer"
+        className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 hover:opacity-100 transition-opacity cursor-pointer"
+        style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom))' }}
         onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
       >
         <span className="text-[10px] uppercase tracking-[0.3em] font-black text-[#141414]">Scroll</span>

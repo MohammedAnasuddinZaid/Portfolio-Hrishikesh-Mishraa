@@ -14,14 +14,14 @@ const item = {
 
 export const AboutPhilosophy: React.FC = () => {
   return (
-    <section id="about" className="py-24 lg:py-32 relative overflow-hidden bg-[#f5f5f5] border-t border-black/10 dot-grid">
+    <section id="about" className="py-20 sm:py-28 lg:py-32 relative overflow-hidden bg-[#f5f5f5] border-t border-black/10 dot-grid">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto text-center mb-24"
+          className="max-w-4xl mx-auto text-center mb-12 sm:mb-20"
         >
           <span className="material-symbols-outlined text-red-600 text-5xl sm:text-6xl mb-6">format_quote</span>
           <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black uppercase leading-tight text-[#141414] tracking-tight mb-8">
@@ -42,7 +42,7 @@ export const AboutPhilosophy: React.FC = () => {
             viewport={{ once: true, margin: '-100px' }}
             className="lg:col-span-7 flex flex-col justify-center"
           >
-            <motion.span variants={item} className="text-[10px] uppercase tracking-[0.25em] font-black text-red-600 mb-4">
+            <motion.span variants={item} className="text-[10px] uppercase tracking-[0.25em] font-black text-red-600 mb-4 cool-chip">
               <span className="text-emerald-500 font-mono mr-2">❯</span>01 // THE PHILOSOPHY
             </motion.span>
             <motion.h3
@@ -80,7 +80,7 @@ export const AboutPhilosophy: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="lg:col-span-5 relative"
           >
-            <div className="glass-card p-4 border border-black/20 relative z-10 shadow-xl bg-white">
+            <div className="glass-card p-4 border border-black/20 relative z-10 shadow-xl bg-white cool-frame corner-brackets">
               <div className="aspect-[4/5] overflow-hidden relative bg-[#141414]">
                 <img
                   src={PORTFOLIO_INFO.hiringPortraitUrl}

@@ -30,7 +30,7 @@ export const TestimonialsSection: React.FC = () => {
   };
 
   return (
-    <section className="relative py-32 overflow-hidden bg-white">
+    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-white">
       <div className="dot-grid pointer-events-none" />
       <div className="max-w-6xl mx-auto px-6">
         <motion.h2
@@ -47,7 +47,7 @@ export const TestimonialsSection: React.FC = () => {
           whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.76, 0, 0.24, 1] }}
-          className="text-lg text-[#141414]/60 mb-16 font-mono"
+          className="text-lg text-[#141414]/60 mb-12 sm:mb-16 font-mono"
         >
           Social proof from founders and executives I've worked with.
         </motion.p>
@@ -62,7 +62,7 @@ export const TestimonialsSection: React.FC = () => {
               animate="center"
               exit="exit"
               transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-              className="glow-card bg-white border border-[#141414]/10 p-8 md:p-12"
+              className="glow-card premium-hairline bg-white p-6 sm:p-10 md:p-12 corner-brackets"
               style={{ borderRadius: '8px' }}
             >
               <div className="flex gap-1 mb-6">
@@ -101,15 +101,17 @@ export const TestimonialsSection: React.FC = () => {
 
           <button
             onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 bg-white shadow-lg flex items-center justify-center hover:bg-red-500 hover:text-white transition-all text-[#141414]"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 w-9 h-9 md:w-10 md:h-10 bg-white shadow-lg flex items-center justify-center hover:bg-red-500 hover:text-white transition-all text-[#141414]"
+            aria-label="Previous testimonial"
           >
-            <span className="material-symbols-outlined">chevron_left</span>
+            <span className="material-symbols-outlined text-lg">chevron_left</span>
           </button>
           <button
             onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 bg-white shadow-lg flex items-center justify-center hover:bg-red-500 hover:text-white transition-all text-[#141414]"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 w-9 h-9 md:w-10 md:h-10 bg-white shadow-lg flex items-center justify-center hover:bg-red-500 hover:text-white transition-all text-[#141414]"
+            aria-label="Next testimonial"
           >
-            <span className="material-symbols-outlined">chevron_right</span>
+            <span className="material-symbols-outlined text-lg">chevron_right</span>
           </button>
         </div>
       </div>

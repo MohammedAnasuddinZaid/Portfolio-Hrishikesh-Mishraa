@@ -8,8 +8,8 @@ export const TechStackMarquee: React.FC = () => {
   const filtered = selectedCategory === 'ALL' ? TECH_STACK : TECH_STACK.filter(t => t.category === selectedCategory);
 
   return (
-    <section id="tech-stack" className="py-24 lg:py-32 relative overflow-hidden bg-[#f5f5f5] border-t border-black/10 dot-grid">
-      <div className="w-full py-6 bg-[#141414] border-y border-black mb-20 relative overflow-hidden premium-noise">
+    <section id="tech-stack" className="py-20 sm:py-28 lg:py-32 relative overflow-hidden bg-[#f5f5f5] border-t border-black/10 dot-grid">
+      <div className="w-full py-6 bg-[#141414] border-y border-black mb-12 sm:mb-20 relative overflow-hidden premium-noise">
         <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#141414] to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#141414] to-transparent z-10 pointer-events-none" />
         <div className="animate-marquee flex items-center gap-8 whitespace-nowrap">
@@ -24,7 +24,7 @@ export const TechStackMarquee: React.FC = () => {
       </div>
 
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 gap-6">
           <div>
             <span className="text-[10px] uppercase tracking-[0.25em] font-black text-red-600 mb-3 block"><span className="text-emerald-500 font-mono mr-2">❯</span>07 // TECHNICAL MATRIX</span>
             <motion.h2
@@ -53,7 +53,7 @@ export const TechStackMarquee: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.3, delay: idx * 0.03 }}
-              className="glow-card p-6 border border-black/15 bg-white group shadow-xs"
+              className="glow-card p-6 premium-hairline bg-white group"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">

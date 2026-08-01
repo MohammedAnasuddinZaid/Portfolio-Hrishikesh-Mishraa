@@ -175,7 +175,7 @@ export const CodePlayground: React.FC = () => {
   const handleNext = () => setActiveIdx(prev => (prev + 1) % samples.length);
 
   return (
-    <section className="relative py-32 overflow-hidden bg-[#141414]">
+    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-[#141414]">
       <div className="dot-grid pointer-events-none opacity-20" />
       <motion.div
         initial={{ opacity: 0 }}
@@ -203,12 +203,12 @@ export const CodePlayground: React.FC = () => {
         </motion.p>
 
         <div className="grid md:grid-cols-[240px_1fr] gap-6">
-          <div className="flex md:flex-col gap-2">
+          <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-1 -mx-1 px-1">
             {samples.map((s, i) => (
               <button
                 key={s.lang}
                 onClick={() => setActiveIdx(i)}
-                className={`text-left px-4 py-3 text-xs font-black uppercase tracking-widest transition-all duration-300 border ${
+                className={`text-left px-4 py-3 text-xs font-black uppercase tracking-widest transition-all duration-300 border shrink-0 md:shrink whitespace-nowrap md:whitespace-normal ${
                   i === activeIdx
                     ? 'bg-red-600 text-white border-red-600'
                     : 'bg-transparent text-white/50 border-white/10 hover:text-white hover:border-white/30'

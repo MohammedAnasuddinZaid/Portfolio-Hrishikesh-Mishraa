@@ -195,7 +195,7 @@ export const ThreeCrystal: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-full min-h-[500px] flex items-center justify-center">
+    <div className="relative w-full h-full min-h-[340px] sm:min-h-[500px] flex items-center justify-center">
       <div ref={mountRef} className="w-full h-full absolute inset-0" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent pointer-events-none opacity-60" />
     </div>

@@ -156,8 +156,8 @@ export const TerminalCLI: React.FC = () => {
           animate={{ scale: 1 }}
           whileHover={{ scale: 1.1 }}
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-[180] w-14 h-14 bg-[#141414] text-[#f5f5f5] flex items-center justify-center shadow-xl hover:bg-red-600 transition-all cursor-pointer border border-white/10"
-          style={{ borderRadius: '12px' }}
+          className="fixed bottom-6 right-4 sm:right-6 z-[180] w-14 h-14 bg-[#141414] text-[#f5f5f5] flex items-center justify-center shadow-xl hover:bg-red-600 transition-all cursor-pointer border border-white/10"
+          style={{ borderRadius: '12px', bottom: 'calc(1.5rem + env(safe-area-inset-bottom))' }}
         >
           <span className="material-symbols-outlined text-2xl">terminal</span>
         </motion.button>
@@ -169,8 +169,8 @@ export const TerminalCLI: React.FC = () => {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className={`fixed bottom-6 right-6 z-[180] w-[420px] max-w-[calc(100vw-2rem)] bg-[#0a0a0a] border border-white/10 shadow-2xl overflow-hidden ${isMinimized ? 'h-12' : 'h-[500px] max-h-[calc(100vh-6rem)]'}`}
-            style={{ borderRadius: '12px' }}
+            className={`fixed bottom-6 right-4 sm:right-6 z-[180] w-[420px] max-w-[calc(100vw-2rem)] bg-[#0a0a0a] border border-white/10 shadow-2xl overflow-hidden ${isMinimized ? 'h-12' : 'h-[500px] max-h-[calc(100dvh-5rem)]'}`}
+            style={{ borderRadius: '12px', bottom: 'calc(1.5rem + env(safe-area-inset-bottom))' }}
           >
             <div
               className="flex items-center justify-between px-4 py-2.5 bg-[#141414] border-b border-white/10 cursor-pointer select-none"

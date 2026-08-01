@@ -4,14 +4,14 @@ import { PORTFOLIO_INFO } from '../data/portfolioData';
 
 export const QuoteSection: React.FC = () => {
   return (
-    <section className="py-24 relative overflow-hidden bg-[#141414] text-[#f5f5f5] border-y border-black premium-noise">
+    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#141414] text-[#f5f5f5] border-y border-black premium-noise">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
-          className="animated-dark-border max-w-4xl mx-auto p-12 sm:p-20 bg-black/50 shadow-2xl relative"
+          className="animated-dark-border max-w-4xl mx-auto p-8 sm:p-16 lg:p-20 bg-black/50 shadow-2xl relative"
         >
           <motion.span
             initial={{ opacity: 0, y: -20 }}
